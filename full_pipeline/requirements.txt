@@ -1,0 +1,20 @@
+# Core scientific stack -- pin loosely; these are typically already present on
+# most server/Colab/Kaggle base images, but pip will install/upgrade as needed.
+numpy
+pandas
+scipy
+matplotlib
+scikit-learn
+
+# MOXEC pipeline dependencies
+ucimlrepo
+optuna
+shap
+imbalanced-learn
+xgboost
+lightgbm
+flaml
+scikit-posthocs
+pymoo
+pyarrow
+autogluon.tabular
