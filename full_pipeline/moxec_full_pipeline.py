@@ -1231,7 +1231,8 @@ def run_all_datasets(dataset_keys):
 def run_cross_dataset_aggregation():
     import scikit_posthocs as sp
 
-    summary_paths = sorted(OUTPUT_DIRS["paper"].glob("*_summary.json"))
+    summary_paths = sorted(p for p in OUTPUT_DIRS["paper"].glob("*_summary.json")
+                            if not p.name.startswith("FINAL_"))
     all_summaries = {}
     for p in summary_paths:
         with open(p) as f:

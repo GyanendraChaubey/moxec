@@ -1,0 +1,26 @@
+# System files
+.DS_Store
+__pycache__/
+*.pyc
+
+# Manuscript, journal submissions, and templates -- kept locally, not part of the code repo
+paper/
+Elsevier_Submission/
+Elsevier_Submission.zip
+IETE_Submission/
+SpringerNature_Submission/
+Download+the+journal+article+template+package*.zip
+TF_Template_Word_Windows_2016.dotx
+PALE_lean_protocol.md
+
+# Generated run outputs and results -- large, reproducible via full_pipeline/ or notebooks/
+outputs/
+outputs*/
+outputs.zip
+outputs_moxcel.zip
+moxec_results/
+paper/
+
+# Unrelated generated images
+ChatGPT Image*.png
+Gemini_Generated_Image*.png
