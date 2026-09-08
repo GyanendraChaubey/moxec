@@ -1,0 +1,7 @@
+method,seed,mcc,phi,cost
+FLAML,0,1.0,,
+AutoGluon,0,0.99876841970378,,
+FLAML,1,0.9963094742248593,,
+AutoGluon,1,1.0,,
+FLAML,2,1.0,,
+AutoGluon,2,1.0,,

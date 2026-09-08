@@ -1,0 +1,4 @@
+dataset,seed,moxec_best_mcc,moxec_best_mcc_family,n_trials,n_pareto_front,flaml_mcc,autogluon_mcc
+M4_cardiotocography,0,0.8846290469786997,lightgbm,100,34,0.8717215896107985,0.8634842753635805
+M4_cardiotocography,1,0.8825059025572377,lightgbm,100,33,0.8643141320565745,0.8576787381599225
+M4_cardiotocography,2,0.889789429265153,lightgbm,100,33,0.8627344782862413,0.8634130952805813

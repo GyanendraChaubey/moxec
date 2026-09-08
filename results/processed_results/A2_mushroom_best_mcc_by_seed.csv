@@ -1,0 +1,4 @@
+dataset,seed,moxec_best_mcc,moxec_best_mcc_family,n_trials,n_pareto_front,flaml_mcc,autogluon_mcc
+A2_mushroom,0,1.0,xgboost,100,8,1.0,0.99876841970378
+A2_mushroom,1,1.0,extratrees,100,6,0.9963094742248593,1.0
+A2_mushroom,2,1.0,mlp,100,8,1.0,1.0

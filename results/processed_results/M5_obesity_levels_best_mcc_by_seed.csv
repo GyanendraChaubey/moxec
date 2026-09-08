@@ -1,0 +1,4 @@
+dataset,seed,moxec_best_mcc,moxec_best_mcc_family,n_trials,n_pareto_front,flaml_mcc,autogluon_mcc
+M5_obesity_levels,0,0.9690691878788791,lightgbm,100,30,0.9420622851824864,0.9393664451307941
+M5_obesity_levels,1,0.9735008505056457,lightgbm,100,30,0.991736130624208,0.975292121643697
+M5_obesity_levels,2,0.9729654385220151,lightgbm,100,31,0.9588507153180407,0.950505761415236

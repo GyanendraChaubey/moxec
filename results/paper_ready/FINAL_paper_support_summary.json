@@ -1,0 +1,3908 @@
+{
+  "generated_at_utc": "2026-09-02T09:01:45.701156+00:00",
+  "portfolio_coverage": {
+    "n_datasets_completed": 12,
+    "n_datasets_total": 12,
+    "datasets_completed": [
+      "A1_dry_bean",
+      "A2_mushroom",
+      "A3_wine_quality",
+      "A4_landsat_satellite",
+      "A5_rice",
+      "A6_raisin",
+      "M1_eeg_eye_state",
+      "M2_thyroid_disease",
+      "M3_aids_clinical_trials",
+      "M4_cardiotocography",
+      "M5_obesity_levels",
+      "M6_diabetic_retinopathy"
+    ],
+    "datasets_missing": []
+  },
+  "run_config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300
+  },
+  "master_seed": 42,
+  "best_configs_by_dataset": {
+    "A1_dry_bean": {
+      "best_accuracy_model": {
+        "family": "mlp",
+        "mcc": 0.9185573130257367,
+        "seed": 1
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "logreg",
+        "mcc": 0.8935067205006074,
+        "phi": 0.609424877706038,
+        "cost": 25.2
+      }
+    },
+    "A2_mushroom": {
+      "best_accuracy_model": {
+        "family": "xgboost",
+        "mcc": 1.0,
+        "seed": 0
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "dtree",
+        "mcc": 0.9704914797474181,
+        "phi": 0.41525136577182165,
+        "cost": 13.0
+      }
+    },
+    "A3_wine_quality": {
+      "best_accuracy_model": {
+        "family": "extratrees",
+        "mcc": 0.6388703052678779,
+        "seed": 0
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "xgboost",
+        "mcc": 0.6107720853443018,
+        "phi": 0.3606114164484692,
+        "cost": 28104.2
+      }
+    },
+    "A4_landsat_satellite": {
+      "best_accuracy_model": {
+        "family": "lightgbm",
+        "mcc": 0.9066920952480146,
+        "seed": 1
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "mlp",
+        "mcc": 0.8808033285967198,
+        "phi": 0.5830444683678976,
+        "cost": 1382.0
+      }
+    },
+    "A5_rice": {
+      "best_accuracy_model": {
+        "family": "logreg",
+        "mcc": 0.8605616580189077,
+        "seed": 2
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "logreg",
+        "mcc": 0.8493240065589909,
+        "phi": 0.4022529832421628,
+        "cost": 4.0
+      }
+    },
+    "A6_raisin": {
+      "best_accuracy_model": {
+        "family": "mlp",
+        "mcc": 0.7484116035963307,
+        "seed": 2
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "mlp",
+        "mcc": 0.726120887067013,
+        "phi": 0.44370222768941403,
+        "cost": 2625.0
+      }
+    },
+    "M1_eeg_eye_state": {
+      "best_accuracy_model": {
+        "family": "mlp",
+        "mcc": 0.9369730227026863,
+        "seed": 0
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "mlp",
+        "mcc": 0.9048301743383483,
+        "phi": 0.34722274641842843,
+        "cost": 3009.0
+      }
+    },
+    "M2_thyroid_disease": {
+      "best_accuracy_model": {
+        "family": "lightgbm",
+        "mcc": 0.9794500969782005,
+        "seed": 2
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "extratrees",
+        "mcc": 0.6532036896777613,
+        "phi": 0.13555913758777366,
+        "cost": 21476.4
+      }
+    },
+    "M3_aids_clinical_trials": {
+      "best_accuracy_model": {
+        "family": "lightgbm",
+        "mcc": 0.7197251504448445,
+        "seed": 2
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "mlp",
+        "mcc": 0.6727400170895954,
+        "phi": 0.26437356715422045,
+        "cost": 513.0
+      }
+    },
+    "M4_cardiotocography": {
+      "best_accuracy_model": {
+        "family": "lightgbm",
+        "mcc": 0.889789429265153,
+        "seed": 2
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "mlp",
+        "mcc": 0.79190304695161,
+        "phi": 0.2445082854932195,
+        "cost": 3203.0
+      }
+    },
+    "M5_obesity_levels": {
+      "best_accuracy_model": {
+        "family": "lightgbm",
+        "mcc": 0.9735008505056457,
+        "seed": 1
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "dtree",
+        "mcc": 0.9212013839303527,
+        "phi": 0.74537905982906,
+        "cost": 177.4
+      }
+    },
+    "M6_diabetic_retinopathy": {
+      "best_accuracy_model": {
+        "family": "mlp",
+        "mcc": 0.5142998458017719,
+        "seed": 2
+      },
+      "best_joint_objective_model_knee_point": {
+        "family": "mlp",
+        "mcc": 0.4877609425294713,
+        "phi": 0.2884010058309606,
+        "cost": 673.0
+      }
+    }
+  },
+  "dataset_wise_results": {
+    "A1_dry_bean": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 0.8765085418953594,
+          "Random Search (3-obj)": 0.8766153370502549,
+          "TPE (MCC-only)": 1.1313164462475307
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 0.9132816983990234,
+          "Random Search (3-obj)": 0.9113260275124214,
+          "TPE (MCC-only)": 1.1558615511706327
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 0.939002772632489,
+          "Random Search (3-obj)": 0.9375188671929612,
+          "TPE (MCC-only)": 0.9912387666372435
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "A1_dry_bean",
+          "seed": 0,
+          "moxec_best_mcc": 0.918450206671778,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 15,
+          "flaml_mcc": 0.9231653590302697,
+          "autogluon_mcc": 0.9213833839961895
+        },
+        {
+          "dataset": "A1_dry_bean",
+          "seed": 1,
+          "moxec_best_mcc": 0.9185573130257367,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 15,
+          "flaml_mcc": 0.900934238878045,
+          "autogluon_mcc": 0.9049229453137315
+        },
+        {
+          "dataset": "A1_dry_bean",
+          "seed": 2,
+          "moxec_best_mcc": 0.9176556959278066,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 15,
+          "flaml_mcc": 0.9098613692563757,
+          "autogluon_mcc": 0.9120952101261154
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.9231653590302697,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.9213833839961895,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.900934238878045,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.9049229453137315,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.9098613692563757,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.9120952101261154,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "A2_mushroom": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 0.6995167875439431,
+          "Random Search (3-obj)": 0.7002700300635123,
+          "TPE (MCC-only)": 1.1562703577000442
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 0.727554803268271,
+          "Random Search (3-obj)": 0.7259643558663543,
+          "TPE (MCC-only)": 0.6235682840807896
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 0.6918840713788856,
+          "Random Search (3-obj)": 0.6918823159513217,
+          "TPE (MCC-only)": 0.3559233898495909
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "A2_mushroom",
+          "seed": 0,
+          "moxec_best_mcc": 1.0,
+          "moxec_best_mcc_family": "xgboost",
+          "n_trials": 100,
+          "n_pareto_front": 8,
+          "flaml_mcc": 1.0,
+          "autogluon_mcc": 0.99876841970378
+        },
+        {
+          "dataset": "A2_mushroom",
+          "seed": 1,
+          "moxec_best_mcc": 1.0,
+          "moxec_best_mcc_family": "extratrees",
+          "n_trials": 100,
+          "n_pareto_front": 6,
+          "flaml_mcc": 0.9963094742248593,
+          "autogluon_mcc": 1.0
+        },
+        {
+          "dataset": "A2_mushroom",
+          "seed": 2,
+          "moxec_best_mcc": 1.0,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 8,
+          "flaml_mcc": 1.0,
+          "autogluon_mcc": 1.0
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 1.0,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.99876841970378,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.9963094742248593,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 1.0,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 1.0,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 1.0,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "A3_wine_quality": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 1.0535856238058474,
+          "Random Search (3-obj)": 1.0508703361058735,
+          "TPE (MCC-only)": 0.13102687600797586
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 0.9443070713601256,
+          "Random Search (3-obj)": 0.9383597835076198,
+          "TPE (MCC-only)": 0.42324275670521305
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 1.0356539520495267,
+          "Random Search (3-obj)": 1.0656923084872818,
+          "TPE (MCC-only)": 0.5241576472291504
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "A3_wine_quality",
+          "seed": 0,
+          "moxec_best_mcc": 0.6388703052678779,
+          "moxec_best_mcc_family": "extratrees",
+          "n_trials": 100,
+          "n_pareto_front": 37,
+          "flaml_mcc": 0.6428027440284014,
+          "autogluon_mcc": 0.6251058010934357
+        },
+        {
+          "dataset": "A3_wine_quality",
+          "seed": 1,
+          "moxec_best_mcc": 0.6357890745551957,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 26,
+          "flaml_mcc": 0.6278677121583345,
+          "autogluon_mcc": 0.6328070410714114
+        },
+        {
+          "dataset": "A3_wine_quality",
+          "seed": 2,
+          "moxec_best_mcc": 0.6244834686079549,
+          "moxec_best_mcc_family": "extratrees",
+          "n_trials": 100,
+          "n_pareto_front": 33,
+          "flaml_mcc": 0.6126288339024375,
+          "autogluon_mcc": 0.5615050459070404
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.6428027440284014,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.6251058010934357,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.6278677121583345,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.6328070410714114,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.6126288339024375,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.5615050459070404,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "A4_landsat_satellite": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 1.091628454347638,
+          "Random Search (3-obj)": 1.0612895291140285,
+          "TPE (MCC-only)": 0.968504864209818
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 1.0899702377079163,
+          "Random Search (3-obj)": 1.0551182306982478,
+          "TPE (MCC-only)": 0.9996593974986846
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 1.056561310301264,
+          "Random Search (3-obj)": 1.0651017213569725,
+          "TPE (MCC-only)": 0.4960856722158478
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "A4_landsat_satellite",
+          "seed": 0,
+          "moxec_best_mcc": 0.9047167176976366,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 23,
+          "flaml_mcc": 0.9050818197506701,
+          "autogluon_mcc": 0.9069743845359226
+        },
+        {
+          "dataset": "A4_landsat_satellite",
+          "seed": 1,
+          "moxec_best_mcc": 0.9066920952480146,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 21,
+          "flaml_mcc": 0.8986248815422823,
+          "autogluon_mcc": 0.8994689973486251
+        },
+        {
+          "dataset": "A4_landsat_satellite",
+          "seed": 2,
+          "moxec_best_mcc": 0.9018588741586215,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 29,
+          "flaml_mcc": 0.9003049435770378,
+          "autogluon_mcc": 0.8983463960784395
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.9050818197506701,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.9069743845359226,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.8986248815422823,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.8994689973486251,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.9003049435770378,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.8983463960784395,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "A5_rice": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 0.8112855565404087,
+          "Random Search (3-obj)": 0.8358131121343266,
+          "TPE (MCC-only)": 0.890651376452536
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 0.8962520585902388,
+          "Random Search (3-obj)": 0.7331824587040201,
+          "TPE (MCC-only)": 1.117451513563684
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 0.883649553928731,
+          "Random Search (3-obj)": 0.7753054715931221,
+          "TPE (MCC-only)": 1.1576076886232434
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "A5_rice",
+          "seed": 0,
+          "moxec_best_mcc": 0.8596710122894222,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 8,
+          "flaml_mcc": 0.8443472558002688,
+          "autogluon_mcc": 0.8366395585503466
+        },
+        {
+          "dataset": "A5_rice",
+          "seed": 1,
+          "moxec_best_mcc": 0.8590846296690859,
+          "moxec_best_mcc_family": "logreg",
+          "n_trials": 100,
+          "n_pareto_front": 11,
+          "flaml_mcc": 0.8689853492137327,
+          "autogluon_mcc": 0.8741893098441419
+        },
+        {
+          "dataset": "A5_rice",
+          "seed": 2,
+          "moxec_best_mcc": 0.8605616580189077,
+          "moxec_best_mcc_family": "logreg",
+          "n_trials": 100,
+          "n_pareto_front": 7,
+          "flaml_mcc": 0.8819246380347362,
+          "autogluon_mcc": 0.8792122221692852
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.8443472558002688,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.8366395585503466,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.8689853492137327,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.8741893098441419,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.8819246380347362,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.8792122221692852,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "A6_raisin": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 1.1155036358886214,
+          "Random Search (3-obj)": 1.1482994075458535,
+          "TPE (MCC-only)": 0.9753483033287765
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 1.090631880225858,
+          "Random Search (3-obj)": 1.0783341909109816,
+          "TPE (MCC-only)": 0.5836101581582189
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 1.1234430789415037,
+          "Random Search (3-obj)": 1.0985786074761672,
+          "TPE (MCC-only)": 0.6614665035865401
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "A6_raisin",
+          "seed": 0,
+          "moxec_best_mcc": 0.7462355733463184,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 20,
+          "flaml_mcc": 0.734058687945213,
+          "autogluon_mcc": 0.7349684152591671
+        },
+        {
+          "dataset": "A6_raisin",
+          "seed": 1,
+          "moxec_best_mcc": 0.7424297546416552,
+          "moxec_best_mcc_family": "rforest",
+          "n_trials": 100,
+          "n_pareto_front": 15,
+          "flaml_mcc": 0.7689961710999053,
+          "autogluon_mcc": 0.6904248749404297
+        },
+        {
+          "dataset": "A6_raisin",
+          "seed": 2,
+          "moxec_best_mcc": 0.7484116035963307,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 16,
+          "flaml_mcc": 0.7000432138778694,
+          "autogluon_mcc": 0.7233393492970545
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.734058687945213,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.7349684152591671,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.7689961710999053,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.6904248749404297,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.7000432138778694,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.7233393492970545,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "M1_eeg_eye_state": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 0.9044919736504986,
+          "Random Search (3-obj)": 0.9060225460531761,
+          "TPE (MCC-only)": 1.054644551322271
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 0.8792442096166659,
+          "Random Search (3-obj)": 0.851904900083816,
+          "TPE (MCC-only)": 1.1403079489129484
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 0.897549661177378,
+          "Random Search (3-obj)": 0.9100598462372392,
+          "TPE (MCC-only)": 0.9251429092740797
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "M1_eeg_eye_state",
+          "seed": 0,
+          "moxec_best_mcc": 0.9369730227026863,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 12,
+          "flaml_mcc": 0.9223771648752185,
+          "autogluon_mcc": 0.9115706998532649
+        },
+        {
+          "dataset": "M1_eeg_eye_state",
+          "seed": 1,
+          "moxec_best_mcc": 0.9332048797790347,
+          "moxec_best_mcc_family": "knn",
+          "n_trials": 100,
+          "n_pareto_front": 14,
+          "flaml_mcc": 0.8986159834491688,
+          "autogluon_mcc": 0.8899953157780521
+        },
+        {
+          "dataset": "M1_eeg_eye_state",
+          "seed": 2,
+          "moxec_best_mcc": 0.925677379004261,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 13,
+          "flaml_mcc": 0.9237597830690544,
+          "autogluon_mcc": 0.9136774572096077
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.9223771648752185,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.9115706998532649,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.8986159834491688,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.8899953157780521,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.9237597830690544,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.9136774572096077,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "M2_thyroid_disease": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 0.7260509563337006,
+          "Random Search (3-obj)": 0.7248734276398847,
+          "TPE (MCC-only)": 0.3131946498617839
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 0.6417305790162218,
+          "Random Search (3-obj)": 0.6641141195749676,
+          "TPE (MCC-only)": 0.3011512762000624
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 0.77961005623877,
+          "Random Search (3-obj)": 0.7311572865231475,
+          "TPE (MCC-only)": 0.27348497246543274
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "M2_thyroid_disease",
+          "seed": 0,
+          "moxec_best_mcc": 0.977330631861447,
+          "moxec_best_mcc_family": "dtree",
+          "n_trials": 100,
+          "n_pareto_front": 23,
+          "flaml_mcc": 0.9754080158300814,
+          "autogluon_mcc": 0.9706745590547603
+        },
+        {
+          "dataset": "M2_thyroid_disease",
+          "seed": 1,
+          "moxec_best_mcc": 0.9793512830544933,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 24,
+          "flaml_mcc": 0.9805373678705256,
+          "autogluon_mcc": 0.9502079709591631
+        },
+        {
+          "dataset": "M2_thyroid_disease",
+          "seed": 2,
+          "moxec_best_mcc": 0.9794500969782005,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 31,
+          "flaml_mcc": 0.9849357760195774,
+          "autogluon_mcc": 0.9747430989079932
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.9754080158300814,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.9706745590547603,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.9805373678705256,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.9502079709591631,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.9849357760195774,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.9747430989079932,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "M3_aids_clinical_trials": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 0.9143857524920923,
+          "Random Search (3-obj)": 1.01461806346833,
+          "TPE (MCC-only)": 0.6991109270994207
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 0.877817532448434,
+          "Random Search (3-obj)": 1.0712957376761958,
+          "TPE (MCC-only)": 0.37858734663581367
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 0.8869348957583031,
+          "Random Search (3-obj)": 0.9100083129352537,
+          "TPE (MCC-only)": 0.3572090535480426
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "M3_aids_clinical_trials",
+          "seed": 0,
+          "moxec_best_mcc": 0.7101910900827983,
+          "moxec_best_mcc_family": "rforest",
+          "n_trials": 100,
+          "n_pareto_front": 23,
+          "flaml_mcc": 0.7042265896991947,
+          "autogluon_mcc": 0.6431977545259407
+        },
+        {
+          "dataset": "M3_aids_clinical_trials",
+          "seed": 1,
+          "moxec_best_mcc": 0.7123013378736063,
+          "moxec_best_mcc_family": "rforest",
+          "n_trials": 100,
+          "n_pareto_front": 32,
+          "flaml_mcc": 0.6775370581048039,
+          "autogluon_mcc": 0.6700395047002653
+        },
+        {
+          "dataset": "M3_aids_clinical_trials",
+          "seed": 2,
+          "moxec_best_mcc": 0.7197251504448445,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 23,
+          "flaml_mcc": 0.7450479313388974,
+          "autogluon_mcc": 0.7284836026018621
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.7042265896991947,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.6431977545259407,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.6775370581048039,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.6700395047002653,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.7450479313388974,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.7284836026018621,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "M4_cardiotocography": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 0.9838649964407894,
+          "Random Search (3-obj)": 0.9822289222819496,
+          "TPE (MCC-only)": 0.5337526162449007
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 0.9648210111782495,
+          "Random Search (3-obj)": 0.9401467876461587,
+          "TPE (MCC-only)": 0.5924255590262386
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 0.9641164368319175,
+          "Random Search (3-obj)": 0.9481453938783716,
+          "TPE (MCC-only)": 0.573717388801633
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "M4_cardiotocography",
+          "seed": 0,
+          "moxec_best_mcc": 0.8846290469786997,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 34,
+          "flaml_mcc": 0.8717215896107985,
+          "autogluon_mcc": 0.8634842753635805
+        },
+        {
+          "dataset": "M4_cardiotocography",
+          "seed": 1,
+          "moxec_best_mcc": 0.8825059025572377,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 33,
+          "flaml_mcc": 0.8643141320565745,
+          "autogluon_mcc": 0.8576787381599225
+        },
+        {
+          "dataset": "M4_cardiotocography",
+          "seed": 2,
+          "moxec_best_mcc": 0.889789429265153,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 33,
+          "flaml_mcc": 0.8627344782862413,
+          "autogluon_mcc": 0.8634130952805813
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.8717215896107985,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.8634842753635805,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.8643141320565745,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.8576787381599225,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.8627344782862413,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.8634130952805813,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "M5_obesity_levels": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 1.085871526556534,
+          "Random Search (3-obj)": 1.0968878826683108,
+          "TPE (MCC-only)": 0.9030930955310984
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 1.1155827075586913,
+          "Random Search (3-obj)": 1.1241204072090643,
+          "TPE (MCC-only)": 0.7222277362365225
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 1.0974339175885421,
+          "Random Search (3-obj)": 1.0879873872187857,
+          "TPE (MCC-only)": 0.7102798404713464
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "M5_obesity_levels",
+          "seed": 0,
+          "moxec_best_mcc": 0.9690691878788791,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 30,
+          "flaml_mcc": 0.9420622851824864,
+          "autogluon_mcc": 0.9393664451307941
+        },
+        {
+          "dataset": "M5_obesity_levels",
+          "seed": 1,
+          "moxec_best_mcc": 0.9735008505056457,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 30,
+          "flaml_mcc": 0.991736130624208,
+          "autogluon_mcc": 0.975292121643697
+        },
+        {
+          "dataset": "M5_obesity_levels",
+          "seed": 2,
+          "moxec_best_mcc": 0.9729654385220151,
+          "moxec_best_mcc_family": "lightgbm",
+          "n_trials": 100,
+          "n_pareto_front": 31,
+          "flaml_mcc": 0.9588507153180407,
+          "autogluon_mcc": 0.950505761415236
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.9420622851824864,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.9393664451307941,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.991736130624208,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.975292121643697,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.9588507153180407,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.950505761415236,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    },
+    "M6_diabetic_retinopathy": {
+      "hypervolume_by_seed": [
+        {
+          "seed": 0,
+          "MOXEC (NSGA-II)": 0.9756215286801491,
+          "Random Search (3-obj)": 0.9507629690537389,
+          "TPE (MCC-only)": 0.6612502180285197
+        },
+        {
+          "seed": 1,
+          "MOXEC (NSGA-II)": 1.0252261234600688,
+          "Random Search (3-obj)": 1.01676444821552,
+          "TPE (MCC-only)": 0.7308719518270662
+        },
+        {
+          "seed": 2,
+          "MOXEC (NSGA-II)": 1.0374162058309233,
+          "Random Search (3-obj)": 0.9765705283755185,
+          "TPE (MCC-only)": 0.7085094956389753
+        }
+      ],
+      "best_mcc_by_seed": [
+        {
+          "dataset": "M6_diabetic_retinopathy",
+          "seed": 0,
+          "moxec_best_mcc": 0.5106943255058358,
+          "moxec_best_mcc_family": "logreg",
+          "n_trials": 100,
+          "n_pareto_front": 22,
+          "flaml_mcc": 0.44685371861053397,
+          "autogluon_mcc": 0.41858405486230443
+        },
+        {
+          "dataset": "M6_diabetic_retinopathy",
+          "seed": 1,
+          "moxec_best_mcc": 0.5073736343129813,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 23,
+          "flaml_mcc": 0.3723663787381086,
+          "autogluon_mcc": 0.34551226942297975
+        },
+        {
+          "dataset": "M6_diabetic_retinopathy",
+          "seed": 2,
+          "moxec_best_mcc": 0.5142998458017719,
+          "moxec_best_mcc_family": "mlp",
+          "n_trials": 100,
+          "n_pareto_front": 16,
+          "flaml_mcc": 0.18861078821783972,
+          "autogluon_mcc": 0.29534503705101517
+        }
+      ],
+      "baseline_point_results": [
+        {
+          "method": "FLAML",
+          "seed": 0,
+          "mcc": 0.44685371861053397,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 0,
+          "mcc": 0.41858405486230443,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 1,
+          "mcc": 0.3723663787381086,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 1,
+          "mcc": 0.34551226942297975,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "FLAML",
+          "seed": 2,
+          "mcc": 0.18861078821783972,
+          "phi": null,
+          "cost": null
+        },
+        {
+          "method": "AutoGluon",
+          "seed": 2,
+          "mcc": 0.29534503705101517,
+          "phi": null,
+          "cost": null
+        }
+      ]
+    }
+  },
+  "aggregate_statistics": {
+    "portfolio_hypervolume_summary": [
+      {
+        "dataset": "A1_dry_bean",
+        "domain": "agriculture",
+        "n_instances": 13611,
+        "n_classes": 7,
+        "MOXEC (NSGA-II)_mean": 0.9095976709756238,
+        "MOXEC (NSGA-II)_std": 0.031409572782810445,
+        "Random Search (3-obj)_mean": 0.9084867439185458,
+        "Random Search (3-obj)_std": 0.030550877965382976,
+        "TPE (MCC-only)_mean": 1.092805588018469,
+        "TPE (MCC-only)_std": 0.08881148545112753,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": false,
+        "hv_gain_vs_random": 0.0011109270570780483
+      },
+      {
+        "dataset": "A2_mushroom",
+        "domain": "agriculture",
+        "n_instances": 8124,
+        "n_classes": 2,
+        "MOXEC (NSGA-II)_mean": 0.7063185540636999,
+        "MOXEC (NSGA-II)_std": 0.018782925736505165,
+        "Random Search (3-obj)_mean": 0.7060389006270628,
+        "Random Search (3-obj)_std": 0.017758273054458852,
+        "TPE (MCC-only)_mean": 0.7119206772101415,
+        "TPE (MCC-only)_std": 0.4074229083711621,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": false,
+        "hv_gain_vs_random": 0.0002796534366371617
+      },
+      {
+        "dataset": "A3_wine_quality",
+        "domain": "agriculture",
+        "n_instances": 6497,
+        "n_classes": 2,
+        "MOXEC (NSGA-II)_mean": 1.0111822157385,
+        "MOXEC (NSGA-II)_std": 0.05860545976882542,
+        "Random Search (3-obj)_mean": 1.0183074760335917,
+        "Random Search (3-obj)_std": 0.06963223299226669,
+        "TPE (MCC-only)_mean": 0.3594757599807797,
+        "TPE (MCC-only)_std": 0.20417547165043914,
+        "moxec_wins_vs_random": false,
+        "moxec_wins_vs_tpe": true,
+        "hv_gain_vs_random": -0.007125260295091751
+      },
+      {
+        "dataset": "A4_landsat_satellite",
+        "domain": "agriculture",
+        "n_instances": 6435,
+        "n_classes": 6,
+        "MOXEC (NSGA-II)_mean": 1.0793866674522727,
+        "MOXEC (NSGA-II)_std": 0.019784719290639203,
+        "Random Search (3-obj)_mean": 1.0605031603897495,
+        "Random Search (3-obj)_std": 0.005037986032245767,
+        "TPE (MCC-only)_mean": 0.8214166446414501,
+        "TPE (MCC-only)_std": 0.2821751804299109,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": true,
+        "hv_gain_vs_random": 0.018883507062523286
+      },
+      {
+        "dataset": "A5_rice",
+        "domain": "agriculture",
+        "n_instances": 3810,
+        "n_classes": 2,
+        "MOXEC (NSGA-II)_mean": 0.8637290563531262,
+        "MOXEC (NSGA-II)_std": 0.04585244034280734,
+        "Random Search (3-obj)_mean": 0.7814336808104896,
+        "Random Search (3-obj)_std": 0.05158903921417604,
+        "TPE (MCC-only)_mean": 1.0552368595464878,
+        "TPE (MCC-only)_std": 0.14394240352587423,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": false,
+        "hv_gain_vs_random": 0.08229537554263666
+      },
+      {
+        "dataset": "A6_raisin",
+        "domain": "agriculture",
+        "n_instances": 900,
+        "n_classes": 2,
+        "MOXEC (NSGA-II)_mean": 1.109859531685328,
+        "MOXEC (NSGA-II)_std": 0.017118283339243586,
+        "Random Search (3-obj)_mean": 1.108404068644334,
+        "Random Search (3-obj)_std": 0.036002606156589616,
+        "TPE (MCC-only)_mean": 0.7401416550245118,
+        "TPE (MCC-only)_std": 0.20738135930154875,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": true,
+        "hv_gain_vs_random": 0.0014554630409939762
+      },
+      {
+        "dataset": "M1_eeg_eye_state",
+        "domain": "medical",
+        "n_instances": 14980,
+        "n_classes": 2,
+        "MOXEC (NSGA-II)_mean": 0.8937619481481809,
+        "MOXEC (NSGA-II)_std": 0.013043100654011913,
+        "Random Search (3-obj)_mean": 0.8893290974580772,
+        "Random Search (3-obj)_std": 0.03247310979910605,
+        "TPE (MCC-only)_mean": 1.0400318031697664,
+        "TPE (MCC-only)_std": 0.10832427187442978,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": false,
+        "hv_gain_vs_random": 0.004432850690103685
+      },
+      {
+        "dataset": "M2_thyroid_disease",
+        "domain": "medical",
+        "n_instances": 7200,
+        "n_classes": 3,
+        "MOXEC (NSGA-II)_mean": 0.7157971971962308,
+        "MOXEC (NSGA-II)_std": 0.06950929608424858,
+        "Random Search (3-obj)_mean": 0.7067149445793333,
+        "Random Search (3-obj)_std": 0.03702694206798114,
+        "TPE (MCC-only)_mean": 0.2959436328424263,
+        "TPE (MCC-only)_std": 0.020360606123979188,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": true,
+        "hv_gain_vs_random": 0.009082252616897546
+      },
+      {
+        "dataset": "M3_aids_clinical_trials",
+        "domain": "medical",
+        "n_instances": 2139,
+        "n_classes": 2,
+        "MOXEC (NSGA-II)_mean": 0.8930460602329431,
+        "MOXEC (NSGA-II)_std": 0.019034663845664063,
+        "Random Search (3-obj)_mean": 0.9986407046932597,
+        "Random Search (3-obj)_std": 0.08182215677896632,
+        "TPE (MCC-only)_mean": 0.47830244242775893,
+        "TPE (MCC-only)_std": 0.1915242753049421,
+        "moxec_wins_vs_random": false,
+        "moxec_wins_vs_tpe": true,
+        "hv_gain_vs_random": -0.10559464446031663
+      },
+      {
+        "dataset": "M4_cardiotocography",
+        "domain": "medical",
+        "n_instances": 2126,
+        "n_classes": 3,
+        "MOXEC (NSGA-II)_mean": 0.9709341481503188,
+        "MOXEC (NSGA-II)_std": 0.011203982969718949,
+        "Random Search (3-obj)_mean": 0.9568403679354933,
+        "Random Search (3-obj)_std": 0.02234789574583528,
+        "TPE (MCC-only)_mean": 0.566631854690924,
+        "TPE (MCC-only)_std": 0.029971355472868656,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": true,
+        "hv_gain_vs_random": 0.014093780214825435
+      },
+      {
+        "dataset": "M5_obesity_levels",
+        "domain": "medical",
+        "n_instances": 2111,
+        "n_classes": 7,
+        "MOXEC (NSGA-II)_mean": 1.0996293839012556,
+        "MOXEC (NSGA-II)_std": 0.014976769457510978,
+        "Random Search (3-obj)_mean": 1.1029985590320537,
+        "Random Search (3-obj)_std": 0.018825622370090986,
+        "TPE (MCC-only)_mean": 0.778533557412989,
+        "TPE (MCC-only)_std": 0.10803701659825406,
+        "moxec_wins_vs_random": false,
+        "moxec_wins_vs_tpe": true,
+        "hv_gain_vs_random": -0.003369175130798041
+      },
+      {
+        "dataset": "M6_diabetic_retinopathy",
+        "domain": "medical",
+        "n_instances": 1151,
+        "n_classes": 2,
+        "MOXEC (NSGA-II)_mean": 1.0127546193237136,
+        "MOXEC (NSGA-II)_std": 0.03273070947305369,
+        "Random Search (3-obj)_mean": 0.9813659818815924,
+        "Random Search (3-obj)_std": 0.03326102965382227,
+        "TPE (MCC-only)_mean": 0.7002105551648538,
+        "TPE (MCC-only)_std": 0.03554505259559589,
+        "moxec_wins_vs_random": true,
+        "moxec_wins_vs_tpe": true,
+        "hv_gain_vs_random": 0.03138863744212117
+      }
+    ],
+    "friedman_nemenyi": {
+      "n_datasets": 12,
+      "n_methods": 3,
+      "statistic": 3.5,
+      "p_value": 0.1737739434504451,
+      "average_ranks": {
+        "MOXEC (NSGA-II)": 1.5833333333333333,
+        "Random Search (3-obj)": 2.0833333333333335,
+        "TPE (MCC-only)": 2.3333333333333335
+      },
+      "critical_difference": 0.956525744556831,
+      "q_alpha_005": 2.343,
+      "caution_low_power": false
+    },
+    "domain_contrast_mannwhitney": {
+      "u_statistic": 18.0,
+      "p_value": 1.0,
+      "medical_n": 6,
+      "medical_mean_gain": -0.00832771643786114,
+      "agriculture_n": 6,
+      "agriculture_mean_gain": 0.0161499443074629,
+      "interpretation": "no significant domain difference -- advantage appears domain-agnostic"
+    }
+  },
+  "ablation_findings": [
+    {
+      "dataset": "A1_dry_bean",
+      "A1_moxec_hv": 0.9095976709756238,
+      "A1_tpe_hv": 1.092805588018469,
+      "A1_moxec_wins": false,
+      "A2_moxec_hv": 0.9095976709756238,
+      "A2_random_hv": 0.9084867439185458,
+      "A2_moxec_wins": true
+    },
+    {
+      "dataset": "A2_mushroom",
+      "A1_moxec_hv": 0.7063185540636999,
+      "A1_tpe_hv": 0.7119206772101415,
+      "A1_moxec_wins": false,
+      "A2_moxec_hv": 0.7063185540636999,
+      "A2_random_hv": 0.7060389006270628,
+      "A2_moxec_wins": true
+    },
+    {
+      "dataset": "A3_wine_quality",
+      "A1_moxec_hv": 1.0111822157385,
+      "A1_tpe_hv": 0.3594757599807797,
+      "A1_moxec_wins": true,
+      "A2_moxec_hv": 1.0111822157385,
+      "A2_random_hv": 1.0183074760335917,
+      "A2_moxec_wins": false
+    },
+    {
+      "dataset": "A4_landsat_satellite",
+      "A1_moxec_hv": 1.0793866674522727,
+      "A1_tpe_hv": 0.8214166446414501,
+      "A1_moxec_wins": true,
+      "A2_moxec_hv": 1.0793866674522727,
+      "A2_random_hv": 1.0605031603897495,
+      "A2_moxec_wins": true
+    },
+    {
+      "dataset": "A5_rice",
+      "A1_moxec_hv": 0.8637290563531262,
+      "A1_tpe_hv": 1.0552368595464878,
+      "A1_moxec_wins": false,
+      "A2_moxec_hv": 0.8637290563531262,
+      "A2_random_hv": 0.7814336808104896,
+      "A2_moxec_wins": true
+    },
+    {
+      "dataset": "A6_raisin",
+      "A1_moxec_hv": 1.109859531685328,
+      "A1_tpe_hv": 0.7401416550245118,
+      "A1_moxec_wins": true,
+      "A2_moxec_hv": 1.109859531685328,
+      "A2_random_hv": 1.108404068644334,
+      "A2_moxec_wins": true
+    },
+    {
+      "dataset": "M1_eeg_eye_state",
+      "A1_moxec_hv": 0.8937619481481809,
+      "A1_tpe_hv": 1.0400318031697664,
+      "A1_moxec_wins": false,
+      "A2_moxec_hv": 0.8937619481481809,
+      "A2_random_hv": 0.8893290974580772,
+      "A2_moxec_wins": true
+    },
+    {
+      "dataset": "M2_thyroid_disease",
+      "A1_moxec_hv": 0.7157971971962308,
+      "A1_tpe_hv": 0.2959436328424263,
+      "A1_moxec_wins": true,
+      "A2_moxec_hv": 0.7157971971962308,
+      "A2_random_hv": 0.7067149445793333,
+      "A2_moxec_wins": true
+    },
+    {
+      "dataset": "M3_aids_clinical_trials",
+      "A1_moxec_hv": 0.8930460602329431,
+      "A1_tpe_hv": 0.47830244242775893,
+      "A1_moxec_wins": true,
+      "A2_moxec_hv": 0.8930460602329431,
+      "A2_random_hv": 0.9986407046932597,
+      "A2_moxec_wins": false
+    },
+    {
+      "dataset": "M4_cardiotocography",
+      "A1_moxec_hv": 0.9709341481503188,
+      "A1_tpe_hv": 0.566631854690924,
+      "A1_moxec_wins": true,
+      "A2_moxec_hv": 0.9709341481503188,
+      "A2_random_hv": 0.9568403679354933,
+      "A2_moxec_wins": true
+    },
+    {
+      "dataset": "M5_obesity_levels",
+      "A1_moxec_hv": 1.0996293839012556,
+      "A1_tpe_hv": 0.778533557412989,
+      "A1_moxec_wins": true,
+      "A2_moxec_hv": 1.0996293839012556,
+      "A2_random_hv": 1.1029985590320537,
+      "A2_moxec_wins": false
+    },
+    {
+      "dataset": "M6_diabetic_retinopathy",
+      "A1_moxec_hv": 1.0127546193237136,
+      "A1_tpe_hv": 0.7002105551648538,
+      "A1_moxec_wins": true,
+      "A2_moxec_hv": 1.0127546193237136,
+      "A2_random_hv": 0.9813659818815924,
+      "A2_moxec_wins": true
+    }
+  ],
+  "statistical_test_results_by_dataset": {
+    "A1_dry_bean": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 1.0,
+          "p_value": 0.5,
+          "moxec_mean_hv": 0.9095976709756238,
+          "baseline_mean_hv": 0.9084867439185458,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 0.9095976709756238,
+          "baseline_mean_hv": 1.092805588018469,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.8333333333333335,
+        "p_value": 0.010175540123456752,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.7659609850368815,
+        "p_value": 0.009787039903408316,
+        "n_configs": 10
+      }
+    },
+    "A2_mushroom": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 2.0,
+          "p_value": 0.75,
+          "moxec_mean_hv": 0.7063185540636999,
+          "baseline_mean_hv": 0.7060389006270628,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 3.0,
+          "p_value": 1.0,
+          "moxec_mean_hv": 0.7063185540636999,
+          "baseline_mean_hv": 0.7119206772101415,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.8571428571428572,
+        "p_value": 0.0065300172547152905,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": -0.3592878785739777,
+        "p_value": 0.38206467736498634,
+        "n_configs": 8
+      }
+    },
+    "A3_wine_quality": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 3.0,
+          "p_value": 1.0,
+          "moxec_mean_hv": 1.0111822157385,
+          "baseline_mean_hv": 1.0183074760335917,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 1.0111822157385,
+          "baseline_mean_hv": 0.3594757599807797,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 1.0,
+        "p_value": 0.0,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.8909090909090909,
+        "p_value": 0.0005421442248338668,
+        "n_configs": 10
+      }
+    },
+    "A4_landsat_satellite": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 1.0,
+          "p_value": 0.5,
+          "moxec_mean_hv": 1.0793866674522727,
+          "baseline_mean_hv": 1.0605031603897495,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 1.0793866674522727,
+          "baseline_mean_hv": 0.8214166446414501,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.7142857142857144,
+        "p_value": 0.046528232284167255,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.18787878787878787,
+        "p_value": 0.6032176100292089,
+        "n_configs": 10
+      }
+    },
+    "A5_rice": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 1.0,
+          "p_value": 0.5,
+          "moxec_mean_hv": 0.8637290563531262,
+          "baseline_mean_hv": 0.7814336808104896,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 0.8637290563531262,
+          "baseline_mean_hv": 1.0552368595464878,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.9285714285714287,
+        "p_value": 0.0008629681828999767,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.8916309815169778,
+        "p_value": 0.002928680906134818,
+        "n_configs": 8
+      }
+    },
+    "A6_raisin": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 3.0,
+          "p_value": 1.0,
+          "moxec_mean_hv": 1.109859531685328,
+          "baseline_mean_hv": 1.108404068644334,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 1.109859531685328,
+          "baseline_mean_hv": 0.7401416550245118,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.9761904761904763,
+        "p_value": 3.314396026200098e-05,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": -0.709090909090909,
+        "p_value": 0.02166592336753244,
+        "n_configs": 10
+      }
+    },
+    "M1_eeg_eye_state": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 3.0,
+          "p_value": 1.0,
+          "moxec_mean_hv": 0.8937619481481809,
+          "baseline_mean_hv": 0.8893290974580772,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 0.8937619481481809,
+          "baseline_mean_hv": 1.0400318031697664,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.9523809523809524,
+        "p_value": 0.000260400024387251,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.709090909090909,
+        "p_value": 0.02166592336753244,
+        "n_configs": 10
+      }
+    },
+    "M2_thyroid_disease": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 2.0,
+          "p_value": 0.75,
+          "moxec_mean_hv": 0.7157971971962308,
+          "baseline_mean_hv": 0.7067149445793333,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 0.7157971971962308,
+          "baseline_mean_hv": 0.2959436328424263,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.9047619047619048,
+        "p_value": 0.002008275505429469,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.6606060606060605,
+        "p_value": 0.03758837757140934,
+        "n_configs": 10
+      }
+    },
+    "M3_aids_clinical_trials": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 0.8930460602329431,
+          "baseline_mean_hv": 0.9986407046932597,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 0.8930460602329431,
+          "baseline_mean_hv": 0.47830244242775893,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.9047619047619048,
+        "p_value": 0.002008275505429469,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.8753839828992931,
+        "p_value": 0.0009053258282579362,
+        "n_configs": 10
+      }
+    },
+    "M4_cardiotocography": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 0.9709341481503188,
+          "baseline_mean_hv": 0.9568403679354933,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 0.9709341481503188,
+          "baseline_mean_hv": 0.566631854690924,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.6428571428571429,
+        "p_value": 0.08555889101267325,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": -0.13939393939393938,
+        "p_value": 0.7009318849100584,
+        "n_configs": 10
+      }
+    },
+    "M5_obesity_levels": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 2.0,
+          "p_value": 0.75,
+          "moxec_mean_hv": 1.0996293839012556,
+          "baseline_mean_hv": 1.1029985590320537,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 1.0996293839012556,
+          "baseline_mean_hv": 0.778533557412989,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.9047619047619048,
+        "p_value": 0.002008275505429469,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.5393939393939393,
+        "p_value": 0.10759318778241479,
+        "n_configs": 10
+      }
+    },
+    "M6_diabetic_retinopathy": {
+      "wilcoxon_tests": {
+        "Random Search (3-obj)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 1.0127546193237136,
+          "baseline_mean_hv": 0.9813659818815924,
+          "n_seeds": 3
+        },
+        "TPE (MCC-only)": {
+          "statistic": 0.0,
+          "p_value": 0.25,
+          "moxec_mean_hv": 1.0127546193237136,
+          "baseline_mean_hv": 0.7002105551648538,
+          "n_seeds": 3
+        }
+      },
+      "faithfulness_sanity_check": {
+        "spearman_rho": 0.9047619047619048,
+        "p_value": 0.002008275505429469,
+        "n_configs": 8
+      },
+      "latency_proxy_validation": {
+        "spearman_rho": 0.4424242424242424,
+        "p_value": 0.20042268671194213,
+        "n_configs": 10
+      }
+    }
+  },
+  "pareto_optimal_configs_seed0": {
+    "A1_dry_bean": [
+      {
+        "trial": 4,
+        "model_family": "dtree",
+        "mcc": 0.6052900100787382,
+        "phi": 0.3713486336208908,
+        "cost": 7.0
+      },
+      {
+        "trial": 19,
+        "model_family": "logreg",
+        "mcc": 0.9089113534776938,
+        "phi": 0.525118192569705,
+        "cost": 108.4
+      },
+      {
+        "trial": 21,
+        "model_family": "mlp",
+        "mcc": 0.9183800214865571,
+        "phi": 0.5396973311342694,
+        "cost": 775.0
+      },
+      {
+        "trial": 26,
+        "model_family": "mlp",
+        "mcc": 0.9176143884738112,
+        "phi": 0.5514766380057745,
+        "cost": 3399.0
+      },
+      {
+        "trial": 28,
+        "model_family": "dtree",
+        "mcc": 0.6212196597290115,
+        "phi": 0.37606572524458015,
+        "cost": 11.0
+      },
+      {
+        "trial": 36,
+        "model_family": "nb",
+        "mcc": 0.8548504858223899,
+        "phi": 0.30054809882607325,
+        "cost": 11.0
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.8935067205006074,
+        "phi": 0.609424877706038,
+        "cost": 25.2
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.3344991238334142,
+        "phi": 0.15965536358642465,
+        "cost": 6.2
+      },
+      {
+        "trial": 46,
+        "model_family": "logreg",
+        "mcc": 0.9094353098281447,
+        "phi": 0.5250308236853307,
+        "cost": 112.0
+      },
+      {
+        "trial": 50,
+        "model_family": "mlp",
+        "mcc": 0.9176019785399806,
+        "phi": 0.5477562965776842,
+        "cost": 775.0
+      },
+      {
+        "trial": 51,
+        "model_family": "mlp",
+        "mcc": 0.918450206671778,
+        "phi": 0.5030270723983661,
+        "cost": 1543.0
+      },
+      {
+        "trial": 68,
+        "model_family": "logreg",
+        "mcc": 0.8989040020957338,
+        "phi": 0.37302699924192056,
+        "cost": 89.6
+      },
+      {
+        "trial": 69,
+        "model_family": "nb",
+        "mcc": 0.8413382076698387,
+        "phi": 0.2926145322122986,
+        "cost": 9.0
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.88396178016304,
+        "phi": 0.5958719018660956,
+        "cost": 12.2
+      },
+      {
+        "trial": 73,
+        "model_family": "logreg",
+        "mcc": 0.8952908576000291,
+        "phi": 0.4329518948547557,
+        "cost": 42.2
+      }
+    ],
+    "A2_mushroom": [
+      {
+        "trial": 10,
+        "model_family": "dtree",
+        "mcc": 1.0,
+        "phi": 0.436206896551724,
+        "cost": 24.6
+      },
+      {
+        "trial": 28,
+        "model_family": "dtree",
+        "mcc": 0.9707692558245705,
+        "phi": 0.4142084112272265,
+        "cost": 13.0
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.9970473723616442,
+        "phi": 0.4234562414909872,
+        "cost": 21.0
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.9096337715524019,
+        "phi": 0.37292942898966847,
+        "cost": 7.0
+      },
+      {
+        "trial": 45,
+        "model_family": "dtree",
+        "mcc": 1.0,
+        "phi": 0.43728395061728403,
+        "cost": 27.4
+      },
+      {
+        "trial": 51,
+        "model_family": "logreg",
+        "mcc": 0.9990147874230292,
+        "phi": 0.43383134199570283,
+        "cost": 24.0
+      },
+      {
+        "trial": 57,
+        "model_family": "dtree",
+        "mcc": 0.9968048708633859,
+        "phi": 0.4379994756806139,
+        "cost": 23.4
+      },
+      {
+        "trial": 98,
+        "model_family": "dtree",
+        "mcc": 0.9704914797474181,
+        "phi": 0.41525136577182165,
+        "cost": 13.0
+      }
+    ],
+    "A3_wine_quality": [
+      {
+        "trial": 1,
+        "model_family": "rforest",
+        "mcc": 0.6373375961621989,
+        "phi": 0.1918975839822687,
+        "cost": 345111.8
+      },
+      {
+        "trial": 8,
+        "model_family": "mlp",
+        "mcc": 0.5075209368801061,
+        "phi": 0.2400329589329009,
+        "cost": 2817.0
+      },
+      {
+        "trial": 11,
+        "model_family": "logreg",
+        "mcc": 0.43302848064599064,
+        "phi": 0.18940520970875446,
+        "cost": 9.0
+      },
+      {
+        "trial": 12,
+        "model_family": "mlp",
+        "mcc": 0.4714875243780032,
+        "phi": 0.21272584279566523,
+        "cost": 289.0
+      },
+      {
+        "trial": 16,
+        "model_family": "logreg",
+        "mcc": 0.4185138337066361,
+        "phi": 0.2012194638461418,
+        "cost": 6.0
+      },
+      {
+        "trial": 21,
+        "model_family": "mlp",
+        "mcc": 0.5060983207494736,
+        "phi": 0.23013363964579142,
+        "cost": 417.0
+      },
+      {
+        "trial": 25,
+        "model_family": "rforest",
+        "mcc": 0.6320809672704103,
+        "phi": 0.19115693678212958,
+        "cost": 235427.8
+      },
+      {
+        "trial": 26,
+        "model_family": "mlp",
+        "mcc": 0.5342163124407128,
+        "phi": 0.3083636162516535,
+        "cost": 2881.0
+      },
+      {
+        "trial": 27,
+        "model_family": "xgboost",
+        "mcc": 0.6107720853443018,
+        "phi": 0.3606114164484692,
+        "cost": 28104.2
+      },
+      {
+        "trial": 28,
+        "model_family": "dtree",
+        "mcc": 0.4211297476573569,
+        "phi": 0.23875079789100204,
+        "cost": 15.0
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.4255382362100025,
+        "phi": 0.20616965742824486,
+        "cost": 8.0
+      },
+      {
+        "trial": 38,
+        "model_family": "rforest",
+        "mcc": 0.6292086021749477,
+        "phi": 0.1893830273776806,
+        "cost": 189946.2
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.42552881487286687,
+        "phi": 0.23008791425235792,
+        "cost": 7.0
+      },
+      {
+        "trial": 42,
+        "model_family": "extratrees",
+        "mcc": 0.631511309661908,
+        "phi": 0.20573676561474868,
+        "cost": 786203.8
+      },
+      {
+        "trial": 43,
+        "model_family": "nb",
+        "mcc": 0.36282776822986096,
+        "phi": 0.23033512195751768,
+        "cost": 10.0
+      },
+      {
+        "trial": 44,
+        "model_family": "mlp",
+        "mcc": 0.5485665888584428,
+        "phi": 0.3265368494295254,
+        "cost": 9857.0
+      },
+      {
+        "trial": 48,
+        "model_family": "xgboost",
+        "mcc": 0.6196834775916391,
+        "phi": 0.32617653031930677,
+        "cost": 43977.6
+      },
+      {
+        "trial": 50,
+        "model_family": "dtree",
+        "mcc": 0.4811942386555076,
+        "phi": 0.3493448017864166,
+        "cost": 1310.2
+      },
+      {
+        "trial": 51,
+        "model_family": "mlp",
+        "mcc": 0.5624644196650734,
+        "phi": 0.31581803421200794,
+        "cost": 9857.0
+      },
+      {
+        "trial": 62,
+        "model_family": "rforest",
+        "mcc": 0.6270244858158165,
+        "phi": 0.19735848437589332,
+        "cost": 87336.4
+      },
+      {
+        "trial": 63,
+        "model_family": "logreg",
+        "mcc": 0.01457469128033211,
+        "phi": 0.0012136778014053796,
+        "cost": 1.0
+      },
+      {
+        "trial": 65,
+        "model_family": "nb",
+        "mcc": 0.3617627885702855,
+        "phi": 0.23595847157456115,
+        "cost": 11.0
+      },
+      {
+        "trial": 68,
+        "model_family": "lightgbm",
+        "mcc": 0.6093204335335972,
+        "phi": 0.29501137490520213,
+        "cost": 3264.0
+      },
+      {
+        "trial": 70,
+        "model_family": "rforest",
+        "mcc": 0.6280734423943766,
+        "phi": 0.2614131107990829,
+        "cost": 121987.4
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.4332631806164584,
+        "phi": 0.1441695315784433,
+        "cost": 7.0
+      },
+      {
+        "trial": 74,
+        "model_family": "mlp",
+        "mcc": 0.5207759218438757,
+        "phi": 0.3108834186689931,
+        "cost": 2881.0
+      },
+      {
+        "trial": 76,
+        "model_family": "dtree",
+        "mcc": 0.48586083119342216,
+        "phi": 0.3242922221206121,
+        "cost": 1393.8
+      },
+      {
+        "trial": 77,
+        "model_family": "mlp",
+        "mcc": 0.4890136053913938,
+        "phi": 0.2637093805189434,
+        "cost": 2689.0
+      },
+      {
+        "trial": 79,
+        "model_family": "extratrees",
+        "mcc": 0.6298745357529493,
+        "phi": 0.20404031568955308,
+        "cost": 557180.8
+      },
+      {
+        "trial": 81,
+        "model_family": "lightgbm",
+        "mcc": 0.6167871098681678,
+        "phi": 0.26004298321184144,
+        "cost": 7424.0
+      },
+      {
+        "trial": 84,
+        "model_family": "logreg",
+        "mcc": 0.44595481136498377,
+        "phi": 0.19003920315403008,
+        "cost": 11.0
+      },
+      {
+        "trial": 88,
+        "model_family": "lightgbm",
+        "mcc": 0.6211546846001933,
+        "phi": 0.2568048795050572,
+        "cost": 15104.0
+      },
+      {
+        "trial": 91,
+        "model_family": "dtree",
+        "mcc": 0.4519264937042558,
+        "phi": 0.30051800209821683,
+        "cost": 1064.6
+      },
+      {
+        "trial": 93,
+        "model_family": "extratrees",
+        "mcc": 0.6388703052678779,
+        "phi": 0.17708462257604304,
+        "cost": 644450.6
+      },
+      {
+        "trial": 96,
+        "model_family": "dtree",
+        "mcc": 0.45985131228048076,
+        "phi": 0.2846020687404784,
+        "cost": 115.8
+      },
+      {
+        "trial": 97,
+        "model_family": "dtree",
+        "mcc": 0.47395575806380974,
+        "phi": 0.32659019860532423,
+        "cost": 1130.2
+      },
+      {
+        "trial": 98,
+        "model_family": "dtree",
+        "mcc": 0.4707653868000256,
+        "phi": 0.2993085485851005,
+        "cost": 401.8
+      }
+    ],
+    "A4_landsat_satellite": [
+      {
+        "trial": 4,
+        "model_family": "dtree",
+        "mcc": 0.537786082429022,
+        "phi": 0.335488179120561,
+        "cost": 7.0
+      },
+      {
+        "trial": 12,
+        "model_family": "mlp",
+        "mcc": 0.86360726273819,
+        "phi": 0.5475716667779805,
+        "cost": 902.0
+      },
+      {
+        "trial": 16,
+        "model_family": "logreg",
+        "mcc": 0.8094998527764684,
+        "phi": 0.5008892169627192,
+        "cost": 114.0
+      },
+      {
+        "trial": 19,
+        "model_family": "logreg",
+        "mcc": 0.8255303914159088,
+        "phi": 0.5540863085436732,
+        "cost": 210.2
+      },
+      {
+        "trial": 21,
+        "model_family": "mlp",
+        "mcc": 0.8808033285967198,
+        "phi": 0.5830444683678976,
+        "cost": 1382.0
+      },
+      {
+        "trial": 26,
+        "model_family": "mlp",
+        "mcc": 0.8844454506714682,
+        "phi": 0.5374448448825295,
+        "cost": 4646.0
+      },
+      {
+        "trial": 28,
+        "model_family": "dtree",
+        "mcc": 0.5388930417294849,
+        "phi": 0.28779995982384005,
+        "cost": 14.2
+      },
+      {
+        "trial": 33,
+        "model_family": "nb",
+        "mcc": 0.7423461705988703,
+        "phi": 0.20582045094600673,
+        "cost": 19.0
+      },
+      {
+        "trial": 36,
+        "model_family": "nb",
+        "mcc": 0.7483944908205107,
+        "phi": 0.20674342053912248,
+        "cost": 25.0
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.8173231860998975,
+        "phi": 0.47858937116287387,
+        "cost": 82.2
+      },
+      {
+        "trial": 44,
+        "model_family": "mlp",
+        "mcc": 0.8871889901604092,
+        "phi": 0.5356290629384731,
+        "cost": 13382.0
+      },
+      {
+        "trial": 46,
+        "model_family": "logreg",
+        "mcc": 0.8268959607851271,
+        "phi": 0.5429009442339424,
+        "cost": 216.0
+      },
+      {
+        "trial": 51,
+        "model_family": "mlp",
+        "mcc": 0.8855533618659234,
+        "phi": 0.5316557870639474,
+        "cost": 1382.0
+      },
+      {
+        "trial": 61,
+        "model_family": "nb",
+        "mcc": 0.7458870182231954,
+        "phi": 0.1934059092265768,
+        "cost": 23.0
+      },
+      {
+        "trial": 65,
+        "model_family": "nb",
+        "mcc": 0.7498821814015506,
+        "phi": 0.16664217682854568,
+        "cost": 35.0
+      },
+      {
+        "trial": 68,
+        "model_family": "lightgbm",
+        "mcc": 0.9024309325322672,
+        "phi": 0.5450220624595008,
+        "cost": 19584.0
+      },
+      {
+        "trial": 69,
+        "model_family": "nb",
+        "mcc": 0.7523577974646084,
+        "phi": 0.14421668262273812,
+        "cost": 36.0
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.7945998145789324,
+        "phi": 0.3144945114499692,
+        "cost": 37.4
+      },
+      {
+        "trial": 72,
+        "model_family": "mlp",
+        "mcc": 0.8735075254348716,
+        "phi": 0.5928937326007002,
+        "cost": 1190.0
+      },
+      {
+        "trial": 77,
+        "model_family": "mlp",
+        "mcc": 0.8754118830402804,
+        "phi": 0.5733764856066419,
+        "cost": 1222.0
+      },
+      {
+        "trial": 78,
+        "model_family": "dtree",
+        "mcc": 0.8352339238323199,
+        "phi": 0.5214961977943366,
+        "cost": 451.4
+      },
+      {
+        "trial": 86,
+        "model_family": "dtree",
+        "mcc": 0.8327318967258523,
+        "phi": 0.5250115186834095,
+        "cost": 477.8
+      },
+      {
+        "trial": 88,
+        "model_family": "lightgbm",
+        "mcc": 0.9047167176976366,
+        "phi": 0.5457091870683551,
+        "cost": 92928.0
+      }
+    ],
+    "A5_rice": [
+      {
+        "trial": 16,
+        "model_family": "logreg",
+        "mcc": 0.8548015395009283,
+        "phi": 0.30314951098810294,
+        "cost": 4.0
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.8514897277613788,
+        "phi": 0.261765992647666,
+        "cost": 2.6
+      },
+      {
+        "trial": 44,
+        "model_family": "mlp",
+        "mcc": 0.8596710122894222,
+        "phi": 0.3547337160766329,
+        "cost": 9345.0
+      },
+      {
+        "trial": 58,
+        "model_family": "logreg",
+        "mcc": 0.8493240065589909,
+        "phi": 0.4022529832421628,
+        "cost": 4.0
+      },
+      {
+        "trial": 63,
+        "model_family": "logreg",
+        "mcc": 0.015140708274380386,
+        "phi": 0.002559933665815987,
+        "cost": 1.0
+      },
+      {
+        "trial": 68,
+        "model_family": "logreg",
+        "mcc": 0.8550034939354638,
+        "phi": 0.39312865916986794,
+        "cost": 7.0
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.8575665771672133,
+        "phi": 0.2977072248989404,
+        "cost": 5.0
+      },
+      {
+        "trial": 87,
+        "model_family": "logreg",
+        "mcc": 0.8586322608931137,
+        "phi": 0.38045334760803096,
+        "cost": 7.0
+      }
+    ],
+    "A6_raisin": [
+      {
+        "trial": 10,
+        "model_family": "dtree",
+        "mcc": 0.5965187957192597,
+        "phi": 0.3710777544592904,
+        "cost": 93.8
+      },
+      {
+        "trial": 18,
+        "model_family": "dtree",
+        "mcc": 0.5965187957192597,
+        "phi": 0.37759657138129354,
+        "cost": 95.4
+      },
+      {
+        "trial": 19,
+        "model_family": "logreg",
+        "mcc": 0.7296098474122117,
+        "phi": 0.3473201212649738,
+        "cost": 6.6
+      },
+      {
+        "trial": 26,
+        "model_family": "mlp",
+        "mcc": 0.726120887067013,
+        "phi": 0.44370222768941403,
+        "cost": 2625.0
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.7226101813638797,
+        "phi": 0.2231693450544967,
+        "cost": 2.4
+      },
+      {
+        "trial": 44,
+        "model_family": "mlp",
+        "mcc": 0.7354550619523993,
+        "phi": 0.4523775016928777,
+        "cost": 9345.0
+      },
+      {
+        "trial": 46,
+        "model_family": "logreg",
+        "mcc": 0.7409575184327887,
+        "phi": 0.36005581992662355,
+        "cost": 7.0
+      },
+      {
+        "trial": 47,
+        "model_family": "dtree",
+        "mcc": 0.6190946901241825,
+        "phi": 0.41116666666666674,
+        "cost": 137.8
+      },
+      {
+        "trial": 50,
+        "model_family": "logreg",
+        "mcc": 0.7387055156706721,
+        "phi": 0.2995747978196602,
+        "cost": 4.6
+      },
+      {
+        "trial": 51,
+        "model_family": "mlp",
+        "mcc": 0.7374263536993505,
+        "phi": 0.4497871197602592,
+        "cost": 9345.0
+      },
+      {
+        "trial": 68,
+        "model_family": "logreg",
+        "mcc": 0.7295076004762316,
+        "phi": 0.3530382802477778,
+        "cost": 5.6
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.7226752251248381,
+        "phi": 0.16471181542786503,
+        "cost": 2.0
+      },
+      {
+        "trial": 76,
+        "model_family": "dtree",
+        "mcc": 0.6030072414486132,
+        "phi": 0.3943174603174603,
+        "cost": 117.0
+      },
+      {
+        "trial": 78,
+        "model_family": "dtree",
+        "mcc": 0.627844430438524,
+        "phi": 0.3859854614553523,
+        "cost": 127.0
+      },
+      {
+        "trial": 83,
+        "model_family": "logreg",
+        "mcc": 0.741189061140189,
+        "phi": 0.24198974433872902,
+        "cost": 3.2
+      },
+      {
+        "trial": 85,
+        "model_family": "dtree",
+        "mcc": 0.6031931518753826,
+        "phi": 0.39251026706979086,
+        "cost": 113.8
+      },
+      {
+        "trial": 90,
+        "model_family": "mlp",
+        "mcc": 0.7462355733463184,
+        "phi": 0.19831347518571996,
+        "cost": 2625.0
+      },
+      {
+        "trial": 91,
+        "model_family": "dtree",
+        "mcc": 0.6031057761528522,
+        "phi": 0.38732687939632393,
+        "cost": 101.8
+      },
+      {
+        "trial": 93,
+        "model_family": "dtree",
+        "mcc": 0.6079063335997129,
+        "phi": 0.43246031746031743,
+        "cost": 164.2
+      },
+      {
+        "trial": 96,
+        "model_family": "logreg",
+        "mcc": 0.7278249135289696,
+        "phi": 0.35870449485710865,
+        "cost": 5.0
+      }
+    ],
+    "M1_eeg_eye_state": [
+      {
+        "trial": 4,
+        "model_family": "dtree",
+        "mcc": 0.2631762604869336,
+        "phi": 0.11769596728447858,
+        "cost": 7.0
+      },
+      {
+        "trial": 8,
+        "model_family": "mlp",
+        "mcc": 0.9048301743383483,
+        "phi": 0.34722274641842843,
+        "cost": 3009.0
+      },
+      {
+        "trial": 12,
+        "model_family": "mlp",
+        "mcc": 0.6732183505537505,
+        "phi": 0.23640351298548984,
+        "cost": 321.0
+      },
+      {
+        "trial": 27,
+        "model_family": "xgboost",
+        "mcc": 0.9017543807217852,
+        "phi": 0.3804749856779682,
+        "cost": 27040.2
+      },
+      {
+        "trial": 28,
+        "model_family": "dtree",
+        "mcc": 0.3195968747292594,
+        "phi": 0.12309331383553705,
+        "cost": 13.0
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.2630993013908415,
+        "phi": 0.13361204393446008,
+        "cost": 7.0
+      },
+      {
+        "trial": 44,
+        "model_family": "mlp",
+        "mcc": 0.9369730227026863,
+        "phi": 0.3570856612988867,
+        "cost": 10241.0
+      },
+      {
+        "trial": 51,
+        "model_family": "mlp",
+        "mcc": 0.8364943223089574,
+        "phi": 0.332227346414016,
+        "cost": 513.0
+      },
+      {
+        "trial": 63,
+        "model_family": "logreg",
+        "mcc": 0.0,
+        "phi": 0.0,
+        "cost": 0.0
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.10310907679031367,
+        "phi": 0.02847741387119081,
+        "cost": 5.4
+      },
+      {
+        "trial": 77,
+        "model_family": "mlp",
+        "mcc": 0.6940946017801318,
+        "phi": 0.24302631140177774,
+        "cost": 353.0
+      },
+      {
+        "trial": 98,
+        "model_family": "dtree",
+        "mcc": 0.5683034946539764,
+        "phi": 0.24548486915682277,
+        "cost": 367.4
+      }
+    ],
+    "M2_thyroid_disease": [
+      {
+        "trial": 4,
+        "model_family": "dtree",
+        "mcc": 0.8581233958964756,
+        "phi": 0.07165849083487501,
+        "cost": 5.0
+      },
+      {
+        "trial": 17,
+        "model_family": "extratrees",
+        "mcc": 0.8382998564999327,
+        "phi": 0.10371171463551769,
+        "cost": 95941.2
+      },
+      {
+        "trial": 23,
+        "model_family": "extratrees",
+        "mcc": 0.6532036896777613,
+        "phi": 0.13555913758777366,
+        "cost": 21476.4
+      },
+      {
+        "trial": 28,
+        "model_family": "dtree",
+        "mcc": 0.943245085201735,
+        "phi": 0.0851908258281043,
+        "cost": 11.0
+      },
+      {
+        "trial": 30,
+        "model_family": "extratrees",
+        "mcc": 0.7494624293515552,
+        "phi": 0.13280905037367718,
+        "cost": 174098.8
+      },
+      {
+        "trial": 33,
+        "model_family": "nb",
+        "mcc": 0.1341945726185634,
+        "phi": 0.15553948065047218,
+        "cost": 11.0
+      },
+      {
+        "trial": 36,
+        "model_family": "nb",
+        "mcc": 0.13990005902731553,
+        "phi": 0.16818516659682656,
+        "cost": 14.0
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.8581233958964756,
+        "phi": 0.0991595824056306,
+        "cost": 7.0
+      },
+      {
+        "trial": 42,
+        "model_family": "extratrees",
+        "mcc": 0.813689599551562,
+        "phi": 0.12228100740364096,
+        "cost": 266009.8
+      },
+      {
+        "trial": 43,
+        "model_family": "nb",
+        "mcc": 0.1638492583391303,
+        "phi": 0.22799038686648193,
+        "cost": 20.0
+      },
+      {
+        "trial": 50,
+        "model_family": "dtree",
+        "mcc": 0.9692675605131742,
+        "phi": 0.07974999999999999,
+        "cost": 49.8
+      },
+      {
+        "trial": 60,
+        "model_family": "dtree",
+        "mcc": 0.9609646381959006,
+        "phi": 0.07775477240312026,
+        "cost": 15.0
+      },
+      {
+        "trial": 65,
+        "model_family": "nb",
+        "mcc": 0.11841036794382158,
+        "phi": 0.1928588873560219,
+        "cost": 16.0
+      },
+      {
+        "trial": 72,
+        "model_family": "nb",
+        "mcc": 0.09159531457236048,
+        "phi": 0.23008091534678288,
+        "cost": 19.0
+      },
+      {
+        "trial": 76,
+        "model_family": "dtree",
+        "mcc": 0.9692654130732743,
+        "phi": 0.08002631578947368,
+        "cost": 47.8
+      },
+      {
+        "trial": 78,
+        "model_family": "dtree",
+        "mcc": 0.9643760223230938,
+        "phi": 0.07257208099712967,
+        "cost": 24.6
+      },
+      {
+        "trial": 79,
+        "model_family": "extratrees",
+        "mcc": 0.8116317132767495,
+        "phi": 0.11934369970463217,
+        "cost": 188826.8
+      },
+      {
+        "trial": 86,
+        "model_family": "dtree",
+        "mcc": 0.9698970734471031,
+        "phi": 0.0783565009337068,
+        "cost": 61.4
+      },
+      {
+        "trial": 88,
+        "model_family": "lightgbm",
+        "mcc": 0.9762747216418524,
+        "phi": 0.07649453089682433,
+        "cost": 45312.0
+      },
+      {
+        "trial": 91,
+        "model_family": "dtree",
+        "mcc": 0.9682435485396528,
+        "phi": 0.08031250000000001,
+        "cost": 44.2
+      },
+      {
+        "trial": 92,
+        "model_family": "dtree",
+        "mcc": 0.977330631861447,
+        "phi": 0.07514645858343336,
+        "cost": 41.8
+      },
+      {
+        "trial": 96,
+        "model_family": "dtree",
+        "mcc": 0.9727686916218385,
+        "phi": 0.07701526162086177,
+        "cost": 25.0
+      },
+      {
+        "trial": 97,
+        "model_family": "dtree",
+        "mcc": 0.973268672620714,
+        "phi": 0.07542857142857143,
+        "cost": 44.6
+      }
+    ],
+    "M3_aids_clinical_trials": [
+      {
+        "trial": 9,
+        "model_family": "lightgbm",
+        "mcc": 0.6907865821796395,
+        "phi": 0.13919377882669032,
+        "cost": 5824.0
+      },
+      {
+        "trial": 12,
+        "model_family": "mlp",
+        "mcc": 0.6727400170895954,
+        "phi": 0.26437356715422045,
+        "cost": 513.0
+      },
+      {
+        "trial": 14,
+        "model_family": "lightgbm",
+        "mcc": 0.6940736250066896,
+        "phi": 0.14433637247851555,
+        "cost": 7232.0
+      },
+      {
+        "trial": 16,
+        "model_family": "logreg",
+        "mcc": 0.6254603116145653,
+        "phi": 0.20076528571102753,
+        "cost": 11.6
+      },
+      {
+        "trial": 24,
+        "model_family": "mlp",
+        "mcc": 0.686330152353436,
+        "phi": 0.2119452223269525,
+        "cost": 1537.0
+      },
+      {
+        "trial": 31,
+        "model_family": "knn",
+        "mcc": 0.5431958367965195,
+        "phi": 0.28966666666666663,
+        "cost": 30801.6
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.6458982509144311,
+        "phi": 0.22013514443059892,
+        "cost": 13.6
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.6032174989607764,
+        "phi": 0.2603644962183078,
+        "cost": 7.0
+      },
+      {
+        "trial": 43,
+        "model_family": "nb",
+        "mcc": 0.4714337957871536,
+        "phi": 0.2830633120860094,
+        "cost": 22.0
+      },
+      {
+        "trial": 47,
+        "model_family": "dtree",
+        "mcc": 0.6110781412826107,
+        "phi": 0.22171884057971014,
+        "cost": 307.4
+      },
+      {
+        "trial": 48,
+        "model_family": "xgboost",
+        "mcc": 0.6959189030664922,
+        "phi": 0.17940768989807107,
+        "cost": 11514.8
+      },
+      {
+        "trial": 53,
+        "model_family": "rforest",
+        "mcc": 0.7005502807198922,
+        "phi": 0.07917007622802426,
+        "cost": 31946.8
+      },
+      {
+        "trial": 54,
+        "model_family": "xgboost",
+        "mcc": 0.6774575801603036,
+        "phi": 0.2168941392725443,
+        "cost": 3972.2
+      },
+      {
+        "trial": 56,
+        "model_family": "xgboost",
+        "mcc": 0.6904624103138538,
+        "phi": 0.15877540617566557,
+        "cost": 2156.8
+      },
+      {
+        "trial": 58,
+        "model_family": "xgboost",
+        "mcc": 0.6973480734829385,
+        "phi": 0.17441650124266744,
+        "cost": 28761.6
+      },
+      {
+        "trial": 59,
+        "model_family": "dtree",
+        "mcc": 0.6043396762188518,
+        "phi": 0.252226327473006,
+        "cost": 7.0
+      },
+      {
+        "trial": 63,
+        "model_family": "logreg",
+        "mcc": 0.6269949010314482,
+        "phi": 0.20696026594340128,
+        "cost": 12.8
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.6108211642678794,
+        "phi": 0.11479078126892002,
+        "cost": 1.4
+      },
+      {
+        "trial": 73,
+        "model_family": "rforest",
+        "mcc": 0.7101910900827983,
+        "phi": 0.11442414979270546,
+        "cost": 70740.2
+      },
+      {
+        "trial": 75,
+        "model_family": "xgboost",
+        "mcc": 0.6965918308729889,
+        "phi": 0.16486394272874233,
+        "cost": 8422.4
+      },
+      {
+        "trial": 90,
+        "model_family": "mlp",
+        "mcc": 0.6812277911579899,
+        "phi": 0.1558217381732353,
+        "cost": 737.0
+      },
+      {
+        "trial": 92,
+        "model_family": "nb",
+        "mcc": 0.4882411080464034,
+        "phi": 0.2731301878226763,
+        "cost": 23.0
+      },
+      {
+        "trial": 97,
+        "model_family": "nb",
+        "mcc": 0.4904741569623886,
+        "phi": 0.27257296823659927,
+        "cost": 23.0
+      }
+    ],
+    "M4_cardiotocography": [
+      {
+        "trial": 4,
+        "model_family": "dtree",
+        "mcc": 0.6846304060200751,
+        "phi": 0.13473922147968048,
+        "cost": 7.0
+      },
+      {
+        "trial": 8,
+        "model_family": "mlp",
+        "mcc": 0.7963471907800691,
+        "phi": 0.18707832705011648,
+        "cost": 3523.0
+      },
+      {
+        "trial": 11,
+        "model_family": "logreg",
+        "mcc": 0.6868903502013319,
+        "phi": 0.16122502826258908,
+        "cost": 54.0
+      },
+      {
+        "trial": 12,
+        "model_family": "mlp",
+        "mcc": 0.7576698078521619,
+        "phi": 0.19105483097746034,
+        "cost": 515.0
+      },
+      {
+        "trial": 18,
+        "model_family": "dtree",
+        "mcc": 0.8082345523731952,
+        "phi": 0.14866714829288358,
+        "cost": 115.0
+      },
+      {
+        "trial": 19,
+        "model_family": "logreg",
+        "mcc": 0.7141390108347376,
+        "phi": 0.06658683801509485,
+        "cost": 55.2
+      },
+      {
+        "trial": 21,
+        "model_family": "mlp",
+        "mcc": 0.8110238677205759,
+        "phi": 0.1787696414960646,
+        "cost": 803.0
+      },
+      {
+        "trial": 24,
+        "model_family": "mlp",
+        "mcc": 0.7618737350303912,
+        "phi": 0.215221640467667,
+        "cost": 1539.0
+      },
+      {
+        "trial": 26,
+        "model_family": "mlp",
+        "mcc": 0.8048440626843105,
+        "phi": 0.18028874371135087,
+        "cost": 3587.0
+      },
+      {
+        "trial": 33,
+        "model_family": "nb",
+        "mcc": 0.6295611895491481,
+        "phi": 0.18664502969632016,
+        "cost": 11.0
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.6840473309785644,
+        "phi": 0.15331490225340466,
+        "cost": 27.4
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.5544137762042783,
+        "phi": 0.17805692879157659,
+        "cost": 7.0
+      },
+      {
+        "trial": 44,
+        "model_family": "mlp",
+        "mcc": 0.8018171017582899,
+        "phi": 0.1952090013566868,
+        "cost": 11267.0
+      },
+      {
+        "trial": 49,
+        "model_family": "nb",
+        "mcc": 0.5563758854954177,
+        "phi": 0.42533064900040163,
+        "cost": 21.0
+      },
+      {
+        "trial": 50,
+        "model_family": "dtree",
+        "mcc": 0.8122160915258142,
+        "phi": 0.17253164835164836,
+        "cost": 211.0
+      },
+      {
+        "trial": 59,
+        "model_family": "dtree",
+        "mcc": 0.7722317737528784,
+        "phi": 0.19074315759626587,
+        "cost": 205.4
+      },
+      {
+        "trial": 61,
+        "model_family": "nb",
+        "mcc": 0.638839743639983,
+        "phi": 0.21943433969274118,
+        "cost": 13.0
+      },
+      {
+        "trial": 63,
+        "model_family": "logreg",
+        "mcc": 0.4620377706334608,
+        "phi": 0.03551314721294065,
+        "cost": 2.8
+      },
+      {
+        "trial": 65,
+        "model_family": "nb",
+        "mcc": 0.5765978666556129,
+        "phi": 0.3404035956546337,
+        "cost": 20.0
+      },
+      {
+        "trial": 68,
+        "model_family": "lightgbm",
+        "mcc": 0.8739965654233932,
+        "phi": 0.15223530556691306,
+        "cost": 9792.0
+      },
+      {
+        "trial": 69,
+        "model_family": "nb",
+        "mcc": 0.5708158077024508,
+        "phi": 0.4110063649797625,
+        "cost": 21.0
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.7056099278317607,
+        "phi": 0.04557181492309219,
+        "cost": 40.4
+      },
+      {
+        "trial": 72,
+        "model_family": "nb",
+        "mcc": 0.6044371904092338,
+        "phi": 0.2788383726493039,
+        "cost": 19.0
+      },
+      {
+        "trial": 76,
+        "model_family": "dtree",
+        "mcc": 0.7870631922527985,
+        "phi": 0.17516140350877193,
+        "cost": 240.2
+      },
+      {
+        "trial": 77,
+        "model_family": "mlp",
+        "mcc": 0.79190304695161,
+        "phi": 0.2445082854932195,
+        "cost": 3203.0
+      },
+      {
+        "trial": 78,
+        "model_family": "dtree",
+        "mcc": 0.7956177315437919,
+        "phi": 0.14270404222984348,
+        "cost": 66.6
+      },
+      {
+        "trial": 81,
+        "model_family": "lightgbm",
+        "mcc": 0.8792214638591267,
+        "phi": 0.1584317435358222,
+        "cost": 22272.0
+      },
+      {
+        "trial": 84,
+        "model_family": "logreg",
+        "mcc": 0.6951451945312981,
+        "phi": 0.11074239281155815,
+        "cost": 39.8
+      },
+      {
+        "trial": 88,
+        "model_family": "lightgbm",
+        "mcc": 0.8846290469786997,
+        "phi": 0.15912940932112357,
+        "cost": 45312.0
+      },
+      {
+        "trial": 89,
+        "model_family": "lightgbm",
+        "mcc": 0.8742870548938599,
+        "phi": 0.1534992232671224,
+        "cost": 21696.0
+      },
+      {
+        "trial": 91,
+        "model_family": "dtree",
+        "mcc": 0.7767384854884983,
+        "phi": 0.167248639283231,
+        "cost": 200.6
+      },
+      {
+        "trial": 96,
+        "model_family": "dtree",
+        "mcc": 0.7243915674380093,
+        "phi": 0.212542330895814,
+        "cost": 58.6
+      },
+      {
+        "trial": 97,
+        "model_family": "dtree",
+        "mcc": 0.7757244310168337,
+        "phi": 0.17289580327668636,
+        "cost": 215.4
+      },
+      {
+        "trial": 98,
+        "model_family": "dtree",
+        "mcc": 0.7732416677959535,
+        "phi": 0.17776016124981825,
+        "cost": 128.2
+      }
+    ],
+    "M5_obesity_levels": [
+      {
+        "trial": 0,
+        "model_family": "xgboost",
+        "mcc": 0.9635677088063707,
+        "phi": 0.7045204194308852,
+        "cost": 11740.0
+      },
+      {
+        "trial": 8,
+        "model_family": "mlp",
+        "mcc": 0.9348884417478288,
+        "phi": 0.7202425962429742,
+        "cost": 4679.0
+      },
+      {
+        "trial": 10,
+        "model_family": "dtree",
+        "mcc": 0.910271411012657,
+        "phi": 0.7319287506978978,
+        "cost": 139.4
+      },
+      {
+        "trial": 12,
+        "model_family": "mlp",
+        "mcc": 0.9232478260563752,
+        "phi": 0.6665448808437731,
+        "cost": 999.0
+      },
+      {
+        "trial": 16,
+        "model_family": "logreg",
+        "mcc": 0.9294711262511216,
+        "phi": 0.5947928075954538,
+        "cost": 145.6
+      },
+      {
+        "trial": 18,
+        "model_family": "dtree",
+        "mcc": 0.9074297381299281,
+        "phi": 0.726002827402632,
+        "cost": 136.2
+      },
+      {
+        "trial": 27,
+        "model_family": "xgboost",
+        "mcc": 0.9635743239900263,
+        "phi": 0.7188934112325722,
+        "cost": 13193.8
+      },
+      {
+        "trial": 28,
+        "model_family": "dtree",
+        "mcc": 0.5978709112621616,
+        "phi": 0.4251526132021036,
+        "cost": 14.6
+      },
+      {
+        "trial": 33,
+        "model_family": "nb",
+        "mcc": 0.5142730667207771,
+        "phi": 0.48992058985689946,
+        "cost": 21.0
+      },
+      {
+        "trial": 36,
+        "model_family": "nb",
+        "mcc": 0.5000675818780503,
+        "phi": 0.5595734186407467,
+        "cost": 27.0
+      },
+      {
+        "trial": 37,
+        "model_family": "logreg",
+        "mcc": 0.8830450257238708,
+        "phi": 0.49193903925641747,
+        "cost": 74.8
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.5315572288851739,
+        "phi": 0.35973075297449214,
+        "cost": 7.0
+      },
+      {
+        "trial": 43,
+        "model_family": "nb",
+        "mcc": 0.4736238187785247,
+        "phi": 0.5762638151995617,
+        "cost": 37.0
+      },
+      {
+        "trial": 44,
+        "model_family": "mlp",
+        "mcc": 0.9358995408943953,
+        "phi": 0.7240284176251568,
+        "cost": 13831.0
+      },
+      {
+        "trial": 47,
+        "model_family": "dtree",
+        "mcc": 0.9212013839303527,
+        "phi": 0.74537905982906,
+        "cost": 177.4
+      },
+      {
+        "trial": 51,
+        "model_family": "mlp",
+        "mcc": 0.9237842436238551,
+        "phi": 0.6921777530510256,
+        "cost": 1511.0
+      },
+      {
+        "trial": 55,
+        "model_family": "dtree",
+        "mcc": 0.8915776195085666,
+        "phi": 0.7217066964277838,
+        "cost": 123.0
+      },
+      {
+        "trial": 57,
+        "model_family": "dtree",
+        "mcc": 0.8466565925942646,
+        "phi": 0.6775371084465327,
+        "cost": 69.8
+      },
+      {
+        "trial": 59,
+        "model_family": "dtree",
+        "mcc": 0.5313886823664091,
+        "phi": 0.3597325390649308,
+        "cost": 7.0
+      },
+      {
+        "trial": 61,
+        "model_family": "nb",
+        "mcc": 0.4752692098112502,
+        "phi": 0.5758855303541246,
+        "cost": 38.0
+      },
+      {
+        "trial": 63,
+        "model_family": "logreg",
+        "mcc": 0.9321806193967965,
+        "phi": 0.640280896008192,
+        "cost": 193.0
+      },
+      {
+        "trial": 65,
+        "model_family": "nb",
+        "mcc": 0.475567981646976,
+        "phi": 0.5731170906273302,
+        "cost": 38.0
+      },
+      {
+        "trial": 68,
+        "model_family": "lightgbm",
+        "mcc": 0.9690691878788791,
+        "phi": 0.7281570168657346,
+        "cost": 129920.0
+      },
+      {
+        "trial": 74,
+        "model_family": "mlp",
+        "mcc": 0.942617179687977,
+        "phi": 0.7014295422196811,
+        "cost": 3847.0
+      },
+      {
+        "trial": 76,
+        "model_family": "dtree",
+        "mcc": 0.9173254593387711,
+        "phi": 0.744270512820513,
+        "cost": 163.8
+      },
+      {
+        "trial": 77,
+        "model_family": "mlp",
+        "mcc": 0.9299320709641284,
+        "phi": 0.6919365898797297,
+        "cost": 1063.0
+      },
+      {
+        "trial": 86,
+        "model_family": "dtree",
+        "mcc": 0.9112359944232704,
+        "phi": 0.7248767036382423,
+        "cost": 141.4
+      },
+      {
+        "trial": 88,
+        "model_family": "lightgbm",
+        "mcc": 0.9674244294966613,
+        "phi": 0.7385238608321438,
+        "cost": 108416.0
+      },
+      {
+        "trial": 97,
+        "model_family": "nb",
+        "mcc": 0.48304330504120474,
+        "phi": 0.5877128367108664,
+        "cost": 39.0
+      },
+      {
+        "trial": 98,
+        "model_family": "dtree",
+        "mcc": 0.9020765509232687,
+        "phi": 0.7204905650267918,
+        "cost": 133.8
+      }
+    ],
+    "M6_diabetic_retinopathy": [
+      {
+        "trial": 16,
+        "model_family": "logreg",
+        "mcc": 0.4973771896117717,
+        "phi": 0.2440238693248459,
+        "cost": 10.0
+      },
+      {
+        "trial": 18,
+        "model_family": "dtree",
+        "mcc": 0.19248947817234072,
+        "phi": 0.31447356689725714,
+        "cost": 186.2
+      },
+      {
+        "trial": 19,
+        "model_family": "logreg",
+        "mcc": 0.5059499162710679,
+        "phi": 0.23743911009708482,
+        "cost": 18.8
+      },
+      {
+        "trial": 21,
+        "model_family": "mlp",
+        "mcc": 0.4877609425294713,
+        "phi": 0.2884010058309606,
+        "cost": 673.0
+      },
+      {
+        "trial": 26,
+        "model_family": "mlp",
+        "mcc": 0.4498823999884737,
+        "phi": 0.33689160361860127,
+        "cost": 3393.0
+      },
+      {
+        "trial": 27,
+        "model_family": "xgboost",
+        "mcc": 0.40352137037374475,
+        "phi": 0.3379887688158935,
+        "cost": 7505.8
+      },
+      {
+        "trial": 40,
+        "model_family": "dtree",
+        "mcc": 0.31708385579285353,
+        "phi": 0.10913910905575155,
+        "cost": 7.0
+      },
+      {
+        "trial": 47,
+        "model_family": "dtree",
+        "mcc": 0.20092016478624988,
+        "phi": 0.37412510050681097,
+        "cost": 296.2
+      },
+      {
+        "trial": 54,
+        "model_family": "mlp",
+        "mcc": 0.4845313189138789,
+        "phi": 0.32127747362767095,
+        "cost": 9985.0
+      },
+      {
+        "trial": 57,
+        "model_family": "dtree",
+        "mcc": 0.27256511179808063,
+        "phi": 0.25906926999952246,
+        "cost": 82.2
+      },
+      {
+        "trial": 59,
+        "model_family": "dtree",
+        "mcc": 0.20501684002791593,
+        "phi": 0.3418565310044094,
+        "cost": 263.4
+      },
+      {
+        "trial": 64,
+        "model_family": "mlp",
+        "mcc": 0.4695526223453653,
+        "phi": 0.38097043091113614,
+        "cost": 10753.0
+      },
+      {
+        "trial": 68,
+        "model_family": "logreg",
+        "mcc": 0.5106943255058358,
+        "phi": 0.23662391303395375,
+        "cost": 14.4
+      },
+      {
+        "trial": 71,
+        "model_family": "logreg",
+        "mcc": 0.19020604359180096,
+        "phi": 0.04931598461624674,
+        "cost": 1.6
+      },
+      {
+        "trial": 76,
+        "model_family": "dtree",
+        "mcc": 0.22066427925949839,
+        "phi": 0.2709854877078739,
+        "cost": 153.4
+      },
+      {
+        "trial": 81,
+        "model_family": "logreg",
+        "mcc": 0.5066246144548756,
+        "phi": 0.24578449750865577,
+        "cost": 19.0
+      },
+      {
+        "trial": 83,
+        "model_family": "logreg",
+        "mcc": 0.426119435032423,
+        "phi": 0.15654741340800538,
+        "cost": 9.2
+      },
+      {
+        "trial": 85,
+        "model_family": "dtree",
+        "mcc": 0.2849713574801355,
+        "phi": 0.3325620112890192,
+        "cost": 224.6
+      },
+      {
+        "trial": 86,
+        "model_family": "dtree",
+        "mcc": 0.2788595315532564,
+        "phi": 0.34038453532083757,
+        "cost": 214.2
+      },
+      {
+        "trial": 91,
+        "model_family": "dtree",
+        "mcc": 0.18893103473559353,
+        "phi": 0.32324083813801907,
+        "cost": 200.6
+      },
+      {
+        "trial": 92,
+        "model_family": "lightgbm",
+        "mcc": 0.35554772208886926,
+        "phi": 0.36233926607231315,
+        "cost": 7424.0
+      },
+      {
+        "trial": 98,
+        "model_family": "dtree",
+        "mcc": 0.20324929825259425,
+        "phi": 0.297931347527164,
+        "cost": 165.4
+      }
+    ]
+  },
+  "front_navigation_agreement": [
+    {
+      "dataset": "A1_dry_bean",
+      "all_three_agree": true,
+      "knee_and_mes_agree": true
+    },
+    {
+      "dataset": "A2_mushroom",
+      "all_three_agree": false,
+      "knee_and_mes_agree": true
+    },
+    {
+      "dataset": "A3_wine_quality",
+      "all_three_agree": false,
+      "knee_and_mes_agree": true
+    },
+    {
+      "dataset": "A4_landsat_satellite",
+      "all_three_agree": false,
+      "knee_and_mes_agree": true
+    },
+    {
+      "dataset": "A5_rice",
+      "all_three_agree": true,
+      "knee_and_mes_agree": true
+    },
+    {
+      "dataset": "A6_raisin",
+      "all_three_agree": false,
+      "knee_and_mes_agree": false
+    },
+    {
+      "dataset": "M1_eeg_eye_state",
+      "all_three_agree": true,
+      "knee_and_mes_agree": true
+    },
+    {
+      "dataset": "M2_thyroid_disease",
+      "all_three_agree": false,
+      "knee_and_mes_agree": false
+    },
+    {
+      "dataset": "M3_aids_clinical_trials",
+      "all_three_agree": true,
+      "knee_and_mes_agree": true
+    },
+    {
+      "dataset": "M4_cardiotocography",
+      "all_three_agree": false,
+      "knee_and_mes_agree": true
+    },
+    {
+      "dataset": "M5_obesity_levels",
+      "all_three_agree": false,
+      "knee_and_mes_agree": false
+    },
+    {
+      "dataset": "M6_diabetic_retinopathy",
+      "all_three_agree": false,
+      "knee_and_mes_agree": false
+    }
+  ],
+  "important_observations": [
+    "MOXEC (NSGA-II) beats Random Search on hypervolume in 9/12 datasets.",
+    "MOXEC (NSGA-II) beats single-objective TPE on hypervolume in 8/12 datasets.",
+    "Domain contrast: no significant domain difference -- advantage appears domain-agnostic (Mann-Whitney p=1.0000).",
+    "A2_mushroom: latency-proxy validation rho=-0.359 is weak -- the structural cost proxy may not track real inference latency well here.",
+    "A2_mushroom: dataset load warnings recorded -- ['2480 missing values present (median-imputed below)']",
+    "A4_landsat_satellite: faithfulness sanity-check rho=0.714 is BELOW the 0.80 threshold -- \u03a6 may be noisy for this dataset at the configured sample size.",
+    "A4_landsat_satellite: latency-proxy validation rho=0.188 is weak -- the structural cost proxy may not track real inference latency well here.",
+    "A6_raisin: latency-proxy validation rho=-0.709 is weak -- the structural cost proxy may not track real inference latency well here.",
+    "M4_cardiotocography: faithfulness sanity-check rho=0.643 is BELOW the 0.80 threshold -- \u03a6 may be noisy for this dataset at the configured sample size.",
+    "M4_cardiotocography: latency-proxy validation rho=-0.139 is weak -- the structural cost proxy may not track real inference latency well here."
+  ]
+}

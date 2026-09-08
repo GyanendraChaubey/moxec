@@ -1,0 +1,208 @@
+{
+  "dataset_key": "A3_wine_quality",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 186,
+    "dataset_name": "A3_wine_quality",
+    "task_type": "binary"
+  },
+  "dataset_meta": {
+    "name": "Wine Quality",
+    "domain": "agriculture",
+    "n_instances": 6497,
+    "n_features": 11,
+    "n_classes": 2
+  },
+  "load_warnings": [],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 1.0535856238058474,
+      "Random Search (3-obj)": 1.0508703361058735,
+      "TPE (MCC-only)": 0.13102687600797586
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 0.9443070713601256,
+      "Random Search (3-obj)": 0.9383597835076198,
+      "TPE (MCC-only)": 0.42324275670521305
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 1.0356539520495267,
+      "Random Search (3-obj)": 1.0656923084872818,
+      "TPE (MCC-only)": 0.5241576472291504
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      0.0,
+      0.6498677302688436
+    ],
+    "phi": [
+      -0.00042790301028511926,
+      0.38411270551980736
+    ],
+    "cost": [
+      1.0,
+      922292.8
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 0.6430633041500954,
+      "phi": 0.2203425095661825,
+      "cost": 782144.0,
+      "model_family": "extratrees"
+    },
+    "1": {
+      "mcc": 0.6498677302688436,
+      "phi": 0.1930384748793606,
+      "cost": 296272.0,
+      "model_family": "rforest"
+    },
+    "2": {
+      "mcc": 0.6334598235933412,
+      "phi": 0.22141111302019667,
+      "cost": 215888.0,
+      "model_family": "rforest"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 3.0,
+      "p_value": 1.0,
+      "moxec_mean_hv": 1.0111822157385,
+      "baseline_mean_hv": 1.0183074760335917,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 1.0111822157385,
+      "baseline_mean_hv": 0.3594757599807797,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 1.0,
+    "p_value": 0.0,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": 0.8909090909090909,
+    "p_value": 0.0005421442248338668,
+    "n_configs": 10
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 0.6428027440284014,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.6251058010934357,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.6278677121583345,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 0.6328070410714114,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 0.6126288339024375,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 0.5615050459070404,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "A3_wine_quality",
+      "seed": 0,
+      "moxec_best_mcc": 0.6388703052678779,
+      "moxec_best_mcc_family": "extratrees",
+      "n_trials": 100,
+      "n_pareto_front": 37,
+      "flaml_mcc": 0.6428027440284014,
+      "autogluon_mcc": 0.6251058010934357
+    },
+    {
+      "dataset": "A3_wine_quality",
+      "seed": 1,
+      "moxec_best_mcc": 0.6357890745551957,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 26,
+      "flaml_mcc": 0.6278677121583345,
+      "autogluon_mcc": 0.6328070410714114
+    },
+    {
+      "dataset": "A3_wine_quality",
+      "seed": 2,
+      "moxec_best_mcc": 0.6244834686079549,
+      "moxec_best_mcc_family": "extratrees",
+      "n_trials": 100,
+      "n_pareto_front": 33,
+      "flaml_mcc": 0.6126288339024375,
+      "autogluon_mcc": 0.5615050459070404
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "xgboost",
+      "mcc": 0.6107720853443018,
+      "phi": 0.3606114164484692,
+      "cost": 28104.2
+    },
+    {
+      "rule": "Cost-constrained (budget=2689)",
+      "model_family": "mlp",
+      "mcc": 0.5060983207494736,
+      "phi": 0.23013363964579142,
+      "cost": 417.0
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "xgboost",
+      "mcc": 0.6107720853443018,
+      "phi": 0.3606114164484692,
+      "cost": 28104.2
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": false,
+    "knee_and_mes_agree": true
+  },
+  "elapsed_seconds": 11435.903598546982,
+  "run_timestamp_utc": "2026-09-01T08:24:44.821993+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "n_datasets": 12,
+  "n_methods": 3,
+  "statistic": 3.5,
+  "p_value": 0.1737739434504451,
+  "average_ranks": {
+    "MOXEC (NSGA-II)": 1.5833333333333333,
+    "Random Search (3-obj)": 2.0833333333333335,
+    "TPE (MCC-only)": 2.3333333333333335
+  },
+  "critical_difference": 0.956525744556831,
+  "q_alpha_005": 2.343,
+  "caution_low_power": false
+}

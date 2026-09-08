@@ -1,0 +1,4 @@
+dataset,seed,moxec_best_mcc,moxec_best_mcc_family,n_trials,n_pareto_front,flaml_mcc,autogluon_mcc
+M2_thyroid_disease,0,0.977330631861447,dtree,100,23,0.9754080158300814,0.9706745590547603
+M2_thyroid_disease,1,0.9793512830544933,lightgbm,100,24,0.9805373678705256,0.9502079709591631
+M2_thyroid_disease,2,0.9794500969782005,lightgbm,100,31,0.9849357760195774,0.9747430989079932

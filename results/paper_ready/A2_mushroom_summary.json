@@ -1,0 +1,210 @@
+{
+  "dataset_key": "A2_mushroom",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 73,
+    "dataset_name": "A2_mushroom",
+    "task_type": "binary"
+  },
+  "dataset_meta": {
+    "name": "Mushroom",
+    "domain": "agriculture",
+    "n_instances": 8124,
+    "n_features": 138,
+    "n_classes": 2
+  },
+  "load_warnings": [
+    "2480 missing values present (median-imputed below)"
+  ],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 0.6995167875439431,
+      "Random Search (3-obj)": 0.7002700300635123,
+      "TPE (MCC-only)": 1.1562703577000442
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 0.727554803268271,
+      "Random Search (3-obj)": 0.7259643558663543,
+      "TPE (MCC-only)": 0.6235682840807896
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 0.6918840713788856,
+      "Random Search (3-obj)": 0.6918823159513217,
+      "TPE (MCC-only)": 0.3559233898495909
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      0.8207178445367379,
+      1.0
+    ],
+    "phi": [
+      0.017319565217391312,
+      0.7370383074397993
+    ],
+    "cost": [
+      2.0,
+      896889.6
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 1.0,
+      "phi": 0.7370383074397993,
+      "cost": 1104.0,
+      "model_family": "xgboost"
+    },
+    "1": {
+      "mcc": 1.0,
+      "phi": 0.38913594719471944,
+      "cost": 1695.0,
+      "model_family": "extratrees"
+    },
+    "2": {
+      "mcc": 1.0,
+      "phi": 0.21591423608702814,
+      "cost": 8961.0,
+      "model_family": "mlp"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 2.0,
+      "p_value": 0.75,
+      "moxec_mean_hv": 0.7063185540636999,
+      "baseline_mean_hv": 0.7060389006270628,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 3.0,
+      "p_value": 1.0,
+      "moxec_mean_hv": 0.7063185540636999,
+      "baseline_mean_hv": 0.7119206772101415,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 0.8571428571428572,
+    "p_value": 0.0065300172547152905,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": -0.3592878785739777,
+    "p_value": 0.38206467736498634,
+    "n_configs": 8
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 1.0,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.99876841970378,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.9963094742248593,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 1.0,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 1.0,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 1.0,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "A2_mushroom",
+      "seed": 0,
+      "moxec_best_mcc": 1.0,
+      "moxec_best_mcc_family": "xgboost",
+      "n_trials": 100,
+      "n_pareto_front": 8,
+      "flaml_mcc": 1.0,
+      "autogluon_mcc": 0.99876841970378
+    },
+    {
+      "dataset": "A2_mushroom",
+      "seed": 1,
+      "moxec_best_mcc": 1.0,
+      "moxec_best_mcc_family": "extratrees",
+      "n_trials": 100,
+      "n_pareto_front": 6,
+      "flaml_mcc": 0.9963094742248593,
+      "autogluon_mcc": 1.0
+    },
+    {
+      "dataset": "A2_mushroom",
+      "seed": 2,
+      "moxec_best_mcc": 1.0,
+      "moxec_best_mcc_family": "mlp",
+      "n_trials": 100,
+      "n_pareto_front": 8,
+      "flaml_mcc": 1.0,
+      "autogluon_mcc": 1.0
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "dtree",
+      "mcc": 0.9704914797474181,
+      "phi": 0.41525136577182165,
+      "cost": 13.0
+    },
+    {
+      "rule": "Cost-constrained (budget=22)",
+      "model_family": "logreg",
+      "mcc": 0.9970473723616442,
+      "phi": 0.4234562414909872,
+      "cost": 21.0
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "dtree",
+      "mcc": 0.9968048708633859,
+      "phi": 0.4379994756806139,
+      "cost": 23.4
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": false,
+    "knee_and_mes_agree": true
+  },
+  "elapsed_seconds": 13330.221326828003,
+  "run_timestamp_utc": "2026-09-01T08:56:19.232319+00:00"
+}

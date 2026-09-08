@@ -1,0 +1,4 @@
+dataset,seed,moxec_best_mcc,moxec_best_mcc_family,n_trials,n_pareto_front,flaml_mcc,autogluon_mcc
+A3_wine_quality,0,0.6388703052678779,extratrees,100,37,0.6428027440284014,0.6251058010934357
+A3_wine_quality,1,0.6357890745551957,lightgbm,100,26,0.6278677121583345,0.6328070410714114
+A3_wine_quality,2,0.6244834686079549,extratrees,100,33,0.6126288339024375,0.5615050459070404

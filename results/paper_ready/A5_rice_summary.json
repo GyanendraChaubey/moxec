@@ -1,0 +1,208 @@
+{
+  "dataset_key": "A5_rice",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 545,
+    "dataset_name": "A5_rice",
+    "task_type": "binary"
+  },
+  "dataset_meta": {
+    "name": "Rice (Cammeo and Osmancik)",
+    "domain": "agriculture",
+    "n_instances": 3810,
+    "n_features": 7,
+    "n_classes": 2
+  },
+  "load_warnings": [],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 0.8112855565404087,
+      "Random Search (3-obj)": 0.8358131121343266,
+      "TPE (MCC-only)": 0.890651376452536
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 0.8962520585902388,
+      "Random Search (3-obj)": 0.7331824587040201,
+      "TPE (MCC-only)": 1.117451513563684
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 0.883649553928731,
+      "Random Search (3-obj)": 0.7753054715931221,
+      "TPE (MCC-only)": 1.1576076886232434
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      -0.07506614314828361,
+      0.8616584094255877
+    ],
+    "phi": [
+      -0.01870049199036187,
+      0.5934406800807325
+    ],
+    "cost": [
+      1.0,
+      318488.0
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 0.8568825865244412,
+      "phi": 0.4512621894824236,
+      "cost": 2433.0,
+      "model_family": "mlp"
+    },
+    "1": {
+      "mcc": 0.8611245641765203,
+      "phi": 0.5714832307586065,
+      "cost": 7.0,
+      "model_family": "logreg"
+    },
+    "2": {
+      "mcc": 0.8616584094255877,
+      "phi": 0.5934406800807325,
+      "cost": 6.0,
+      "model_family": "logreg"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 1.0,
+      "p_value": 0.5,
+      "moxec_mean_hv": 0.8637290563531262,
+      "baseline_mean_hv": 0.7814336808104896,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 0.8637290563531262,
+      "baseline_mean_hv": 1.0552368595464878,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 0.9285714285714287,
+    "p_value": 0.0008629681828999767,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": 0.8916309815169778,
+    "p_value": 0.002928680906134818,
+    "n_configs": 8
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 0.8443472558002688,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.8366395585503466,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.8689853492137327,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 0.8741893098441419,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 0.8819246380347362,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 0.8792122221692852,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "A5_rice",
+      "seed": 0,
+      "moxec_best_mcc": 0.8596710122894222,
+      "moxec_best_mcc_family": "mlp",
+      "n_trials": 100,
+      "n_pareto_front": 8,
+      "flaml_mcc": 0.8443472558002688,
+      "autogluon_mcc": 0.8366395585503466
+    },
+    {
+      "dataset": "A5_rice",
+      "seed": 1,
+      "moxec_best_mcc": 0.8590846296690859,
+      "moxec_best_mcc_family": "logreg",
+      "n_trials": 100,
+      "n_pareto_front": 11,
+      "flaml_mcc": 0.8689853492137327,
+      "autogluon_mcc": 0.8741893098441419
+    },
+    {
+      "dataset": "A5_rice",
+      "seed": 2,
+      "moxec_best_mcc": 0.8605616580189077,
+      "moxec_best_mcc_family": "logreg",
+      "n_trials": 100,
+      "n_pareto_front": 7,
+      "flaml_mcc": 0.8819246380347362,
+      "autogluon_mcc": 0.8792122221692852
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "logreg",
+      "mcc": 0.8493240065589909,
+      "phi": 0.4022529832421628,
+      "cost": 4.0
+    },
+    {
+      "rule": "Cost-constrained (budget=4)",
+      "model_family": "logreg",
+      "mcc": 0.8548015395009283,
+      "phi": 0.30314951098810294,
+      "cost": 4.0
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "logreg",
+      "mcc": 0.8493240065589909,
+      "phi": 0.4022529832421628,
+      "cost": 4.0
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": true,
+    "knee_and_mes_agree": true
+  },
+  "elapsed_seconds": 6367.800683259964,
+  "run_timestamp_utc": "2026-09-01T07:00:16.720551+00:00"
+}

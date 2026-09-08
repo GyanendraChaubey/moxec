@@ -1,0 +1,208 @@
+{
+  "dataset_key": "M4_cardiotocography",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 193,
+    "dataset_name": "M4_cardiotocography",
+    "task_type": "multiclass"
+  },
+  "dataset_meta": {
+    "name": "Cardiotocography",
+    "domain": "medical",
+    "n_instances": 2126,
+    "n_features": 21,
+    "n_classes": 3
+  },
+  "load_warnings": [],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 0.9838649964407894,
+      "Random Search (3-obj)": 0.9822289222819496,
+      "TPE (MCC-only)": 0.5337526162449007
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 0.9648210111782495,
+      "Random Search (3-obj)": 0.9401467876461587,
+      "TPE (MCC-only)": 0.5924255590262386
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 0.9641164368319175,
+      "Random Search (3-obj)": 0.9481453938783716,
+      "TPE (MCC-only)": 0.573717388801633
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      0.0,
+      0.8908844546399017
+    ],
+    "phi": [
+      -0.053824770690074984,
+      0.4302125539017461
+    ],
+    "cost": [
+      2.8,
+      297986.8
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 0.885666633886032,
+      "phi": 0.1756008409764945,
+      "cost": 22179.0,
+      "model_family": "xgboost"
+    },
+    "1": {
+      "mcc": 0.887025959454401,
+      "phi": 0.24207241579253175,
+      "cost": 57600.0,
+      "model_family": "lightgbm"
+    },
+    "2": {
+      "mcc": 0.8908844546399017,
+      "phi": 0.21503612627185176,
+      "cost": 43968.0,
+      "model_family": "lightgbm"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 0.9709341481503188,
+      "baseline_mean_hv": 0.9568403679354933,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 0.9709341481503188,
+      "baseline_mean_hv": 0.566631854690924,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 0.6428571428571429,
+    "p_value": 0.08555889101267325,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": -0.13939393939393938,
+    "p_value": 0.7009318849100584,
+    "n_configs": 10
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 0.8717215896107985,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.8634842753635805,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.8643141320565745,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 0.8576787381599225,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 0.8627344782862413,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 0.8634130952805813,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "M4_cardiotocography",
+      "seed": 0,
+      "moxec_best_mcc": 0.8846290469786997,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 34,
+      "flaml_mcc": 0.8717215896107985,
+      "autogluon_mcc": 0.8634842753635805
+    },
+    {
+      "dataset": "M4_cardiotocography",
+      "seed": 1,
+      "moxec_best_mcc": 0.8825059025572377,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 33,
+      "flaml_mcc": 0.8643141320565745,
+      "autogluon_mcc": 0.8576787381599225
+    },
+    {
+      "dataset": "M4_cardiotocography",
+      "seed": 2,
+      "moxec_best_mcc": 0.889789429265153,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 33,
+      "flaml_mcc": 0.8627344782862413,
+      "autogluon_mcc": 0.8634130952805813
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "mlp",
+      "mcc": 0.79190304695161,
+      "phi": 0.2445082854932195,
+      "cost": 3203.0
+    },
+    {
+      "rule": "Cost-constrained (budget=122)",
+      "model_family": "dtree",
+      "mcc": 0.8082345523731952,
+      "phi": 0.14866714829288358,
+      "cost": 115.0
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "mlp",
+      "mcc": 0.79190304695161,
+      "phi": 0.2445082854932195,
+      "cost": 3203.0
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": false,
+    "knee_and_mes_agree": true
+  },
+  "elapsed_seconds": 13234.965749025345,
+  "run_timestamp_utc": "2026-08-26T11:15:49.919619+00:00"
+}

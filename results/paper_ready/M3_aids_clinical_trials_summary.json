@@ -1,0 +1,208 @@
+{
+  "dataset_key": "M3_aids_clinical_trials",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 890,
+    "dataset_name": "M3_aids_clinical_trials",
+    "task_type": "binary"
+  },
+  "dataset_meta": {
+    "name": "AIDS Clinical Trials Group Study 175",
+    "domain": "medical",
+    "n_instances": 2139,
+    "n_features": 23,
+    "n_classes": 2
+  },
+  "load_warnings": [],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 0.9143857524920923,
+      "Random Search (3-obj)": 1.01461806346833,
+      "TPE (MCC-only)": 0.6991109270994207
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 0.877817532448434,
+      "Random Search (3-obj)": 1.0712957376761958,
+      "TPE (MCC-only)": 0.37858734663581367
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 0.8869348957583031,
+      "Random Search (3-obj)": 0.9100083129352537,
+      "TPE (MCC-only)": 0.3572090535480426
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      0.0,
+      0.7226703207739559
+    ],
+    "phi": [
+      -0.0504604700792294,
+      0.3637787393162393
+    ],
+    "cost": [
+      1.0,
+      386813.8
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 0.7190429304358796,
+      "phi": 0.2033545736510954,
+      "cost": 15669.0,
+      "model_family": "xgboost"
+    },
+    "1": {
+      "mcc": 0.7226703207739559,
+      "phi": 0.09786154643782688,
+      "cost": 64368.0,
+      "model_family": "rforest"
+    },
+    "2": {
+      "mcc": 0.7141530253286247,
+      "phi": 0.10080637490599634,
+      "cost": 85592.0,
+      "model_family": "rforest"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 0.8930460602329431,
+      "baseline_mean_hv": 0.9986407046932597,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 0.8930460602329431,
+      "baseline_mean_hv": 0.47830244242775893,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 0.9047619047619048,
+    "p_value": 0.002008275505429469,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": 0.8753839828992931,
+    "p_value": 0.0009053258282579362,
+    "n_configs": 10
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 0.7042265896991947,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.6431977545259407,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.6775370581048039,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 0.6700395047002653,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 0.7450479313388974,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 0.7284836026018621,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "M3_aids_clinical_trials",
+      "seed": 0,
+      "moxec_best_mcc": 0.7101910900827983,
+      "moxec_best_mcc_family": "rforest",
+      "n_trials": 100,
+      "n_pareto_front": 23,
+      "flaml_mcc": 0.7042265896991947,
+      "autogluon_mcc": 0.6431977545259407
+    },
+    {
+      "dataset": "M3_aids_clinical_trials",
+      "seed": 1,
+      "moxec_best_mcc": 0.7123013378736063,
+      "moxec_best_mcc_family": "rforest",
+      "n_trials": 100,
+      "n_pareto_front": 32,
+      "flaml_mcc": 0.6775370581048039,
+      "autogluon_mcc": 0.6700395047002653
+    },
+    {
+      "dataset": "M3_aids_clinical_trials",
+      "seed": 2,
+      "moxec_best_mcc": 0.7197251504448445,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 23,
+      "flaml_mcc": 0.7450479313388974,
+      "autogluon_mcc": 0.7284836026018621
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "mlp",
+      "mcc": 0.6727400170895954,
+      "phi": 0.26437356715422045,
+      "cost": 513.0
+    },
+    {
+      "rule": "Cost-constrained (budget=737)",
+      "model_family": "mlp",
+      "mcc": 0.6812277911579899,
+      "phi": 0.1558217381732353,
+      "cost": 737.0
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "mlp",
+      "mcc": 0.6727400170895954,
+      "phi": 0.26437356715422045,
+      "cost": 513.0
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": true,
+    "knee_and_mes_agree": true
+  },
+  "elapsed_seconds": 6229.145262002945,
+  "run_timestamp_utc": "2026-08-26T04:29:53.484085+00:00"
+}

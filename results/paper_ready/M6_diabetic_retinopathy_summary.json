@@ -1,0 +1,208 @@
+{
+  "dataset_key": "M6_diabetic_retinopathy",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 329,
+    "dataset_name": "M6_diabetic_retinopathy",
+    "task_type": "binary"
+  },
+  "dataset_meta": {
+    "name": "Diabetic Retinopathy Debrecen",
+    "domain": "medical",
+    "n_instances": 1151,
+    "n_features": 19,
+    "n_classes": 2
+  },
+  "load_warnings": [],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 0.9756215286801491,
+      "Random Search (3-obj)": 0.9507629690537389,
+      "TPE (MCC-only)": 0.6612502180285197
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 1.0252261234600688,
+      "Random Search (3-obj)": 1.01676444821552,
+      "TPE (MCC-only)": 0.7308719518270662
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 1.0374162058309233,
+      "Random Search (3-obj)": 0.9765705283755185,
+      "TPE (MCC-only)": 0.7085094956389753
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      0.0,
+      0.5339123869478261
+    ],
+    "phi": [
+      0.0013702671213187796,
+      0.42521052631578937
+    ],
+    "cost": [
+      0.2,
+      223858.0
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 0.5189521023084163,
+      "phi": 0.24136924385214983,
+      "cost": 12.0,
+      "model_family": "logreg"
+    },
+    "1": {
+      "mcc": 0.5339123869478261,
+      "phi": 0.26117154305643625,
+      "cost": 17.0,
+      "model_family": "logreg"
+    },
+    "2": {
+      "mcc": 0.5219407954917376,
+      "phi": 0.25851666630068615,
+      "cost": 16.0,
+      "model_family": "logreg"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 1.0127546193237136,
+      "baseline_mean_hv": 0.9813659818815924,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 1.0127546193237136,
+      "baseline_mean_hv": 0.7002105551648538,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 0.9047619047619048,
+    "p_value": 0.002008275505429469,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": 0.4424242424242424,
+    "p_value": 0.20042268671194213,
+    "n_configs": 10
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 0.44685371861053397,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.41858405486230443,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.3723663787381086,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 0.34551226942297975,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 0.18861078821783972,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 0.29534503705101517,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "M6_diabetic_retinopathy",
+      "seed": 0,
+      "moxec_best_mcc": 0.5106943255058358,
+      "moxec_best_mcc_family": "logreg",
+      "n_trials": 100,
+      "n_pareto_front": 22,
+      "flaml_mcc": 0.44685371861053397,
+      "autogluon_mcc": 0.41858405486230443
+    },
+    {
+      "dataset": "M6_diabetic_retinopathy",
+      "seed": 1,
+      "moxec_best_mcc": 0.5073736343129813,
+      "moxec_best_mcc_family": "mlp",
+      "n_trials": 100,
+      "n_pareto_front": 23,
+      "flaml_mcc": 0.3723663787381086,
+      "autogluon_mcc": 0.34551226942297975
+    },
+    {
+      "dataset": "M6_diabetic_retinopathy",
+      "seed": 2,
+      "moxec_best_mcc": 0.5142998458017719,
+      "moxec_best_mcc_family": "mlp",
+      "n_trials": 100,
+      "n_pareto_front": 16,
+      "flaml_mcc": 0.18861078821783972,
+      "autogluon_mcc": 0.29534503705101517
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "mlp",
+      "mcc": 0.4877609425294713,
+      "phi": 0.2884010058309606,
+      "cost": 673.0
+    },
+    {
+      "rule": "Cost-constrained (budget=193)",
+      "model_family": "logreg",
+      "mcc": 0.5106943255058358,
+      "phi": 0.23662391303395375,
+      "cost": 14.4
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "logreg",
+      "mcc": 0.5066246144548756,
+      "phi": 0.24578449750865577,
+      "cost": 19.0
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": false,
+    "knee_and_mes_agree": false
+  },
+  "elapsed_seconds": 6884.506229639053,
+  "run_timestamp_utc": "2026-08-26T06:32:28.138988+00:00"
+}

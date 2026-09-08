@@ -1,0 +1,13 @@
+dataset,all_three_agree,knee_and_mes_agree
+A1_dry_bean,True,True
+A2_mushroom,False,True
+A3_wine_quality,False,True
+A4_landsat_satellite,False,True
+A5_rice,True,True
+A6_raisin,False,False
+M1_eeg_eye_state,True,True
+M2_thyroid_disease,False,False
+M3_aids_clinical_trials,True,True
+M4_cardiotocography,False,True
+M5_obesity_levels,False,False
+M6_diabetic_retinopathy,False,False

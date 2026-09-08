@@ -1,0 +1,208 @@
+{
+  "dataset_key": "M5_obesity_levels",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 544,
+    "dataset_name": "M5_obesity_levels",
+    "task_type": "multiclass"
+  },
+  "dataset_meta": {
+    "name": "Estimation of Obesity Levels Based On Eating Habits and Physical Condition ",
+    "domain": "medical",
+    "n_instances": 2111,
+    "n_features": 39,
+    "n_classes": 7
+  },
+  "load_warnings": [],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 1.085871526556534,
+      "Random Search (3-obj)": 1.0968878826683108,
+      "TPE (MCC-only)": 0.9030930955310984
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 1.1155827075586913,
+      "Random Search (3-obj)": 1.1241204072090643,
+      "TPE (MCC-only)": 0.7222277362365225
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 1.0974339175885421,
+      "Random Search (3-obj)": 1.0879873872187857,
+      "TPE (MCC-only)": 0.7102798404713464
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      0.39685969630572937,
+      0.9757179350437328
+    ],
+    "phi": [
+      0.019341561674498593,
+      0.7823169161235216
+    ],
+    "cost": [
+      7.0,
+      330119.8
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 0.9735031096417531,
+      "phi": 0.7810952317957299,
+      "cost": 74816.0,
+      "model_family": "lightgbm"
+    },
+    "1": {
+      "mcc": 0.9735039830855085,
+      "phi": 0.747139677427943,
+      "cost": 119616.0,
+      "model_family": "lightgbm"
+    },
+    "2": {
+      "mcc": 0.9757179350437328,
+      "phi": 0.7823169161235216,
+      "cost": 133952.0,
+      "model_family": "lightgbm"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 2.0,
+      "p_value": 0.75,
+      "moxec_mean_hv": 1.0996293839012556,
+      "baseline_mean_hv": 1.1029985590320537,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 1.0996293839012556,
+      "baseline_mean_hv": 0.778533557412989,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 0.9047619047619048,
+    "p_value": 0.002008275505429469,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": 0.5393939393939393,
+    "p_value": 0.10759318778241479,
+    "n_configs": 10
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 0.9420622851824864,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.9393664451307941,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.991736130624208,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 0.975292121643697,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 0.9588507153180407,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 0.950505761415236,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "M5_obesity_levels",
+      "seed": 0,
+      "moxec_best_mcc": 0.9690691878788791,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 30,
+      "flaml_mcc": 0.9420622851824864,
+      "autogluon_mcc": 0.9393664451307941
+    },
+    {
+      "dataset": "M5_obesity_levels",
+      "seed": 1,
+      "moxec_best_mcc": 0.9735008505056457,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 30,
+      "flaml_mcc": 0.991736130624208,
+      "autogluon_mcc": 0.975292121643697
+    },
+    {
+      "dataset": "M5_obesity_levels",
+      "seed": 2,
+      "moxec_best_mcc": 0.9729654385220151,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 31,
+      "flaml_mcc": 0.9588507153180407,
+      "autogluon_mcc": 0.950505761415236
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "dtree",
+      "mcc": 0.9212013839303527,
+      "phi": 0.74537905982906,
+      "cost": 177.4
+    },
+    {
+      "rule": "Cost-constrained (budget=140)",
+      "model_family": "dtree",
+      "mcc": 0.910271411012657,
+      "phi": 0.7319287506978978,
+      "cost": 139.4
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "xgboost",
+      "mcc": 0.9635743239900263,
+      "phi": 0.7188934112325722,
+      "cost": 13193.8
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": false,
+    "knee_and_mes_agree": false
+  },
+  "elapsed_seconds": 17642.82413005829,
+  "run_timestamp_utc": "2026-08-26T12:29:17.744821+00:00"
+}

@@ -1,0 +1,208 @@
+{
+  "dataset_key": "M2_thyroid_disease",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 102,
+    "dataset_name": "M2_thyroid_disease",
+    "task_type": "multiclass"
+  },
+  "dataset_meta": {
+    "name": "Thyroid Disease (ann-thyroid)",
+    "domain": "medical",
+    "n_instances": 7200,
+    "n_features": 21,
+    "n_classes": 3
+  },
+  "load_warnings": [],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 0.7260509563337006,
+      "Random Search (3-obj)": 0.7248734276398847,
+      "TPE (MCC-only)": 0.3131946498617839
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 0.6417305790162218,
+      "Random Search (3-obj)": 0.6641141195749676,
+      "TPE (MCC-only)": 0.3011512762000624
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 0.77961005623877,
+      "Random Search (3-obj)": 0.7311572865231475,
+      "TPE (MCC-only)": 0.27348497246543274
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      0.0,
+      0.9813809575212531
+    ],
+    "phi": [
+      -0.03341308675830563,
+      0.25402737269379205
+    ],
+    "cost": [
+      0.0,
+      266009.8
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 0.976305216805794,
+      "phi": 0.03428571428571428,
+      "cost": 39.0,
+      "model_family": "dtree"
+    },
+    "1": {
+      "mcc": 0.9813809575212531,
+      "phi": 0.04202826432855176,
+      "cost": 35136.0,
+      "model_family": "lightgbm"
+    },
+    "2": {
+      "mcc": 0.9777407889562216,
+      "phi": 0.03746015800215516,
+      "cost": 44857.0,
+      "model_family": "rforest"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 2.0,
+      "p_value": 0.75,
+      "moxec_mean_hv": 0.7157971971962308,
+      "baseline_mean_hv": 0.7067149445793333,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 0.7157971971962308,
+      "baseline_mean_hv": 0.2959436328424263,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 0.9047619047619048,
+    "p_value": 0.002008275505429469,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": 0.6606060606060605,
+    "p_value": 0.03758837757140934,
+    "n_configs": 10
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 0.9754080158300814,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.9706745590547603,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.9805373678705256,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 0.9502079709591631,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 0.9849357760195774,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 0.9747430989079932,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "M2_thyroid_disease",
+      "seed": 0,
+      "moxec_best_mcc": 0.977330631861447,
+      "moxec_best_mcc_family": "dtree",
+      "n_trials": 100,
+      "n_pareto_front": 23,
+      "flaml_mcc": 0.9754080158300814,
+      "autogluon_mcc": 0.9706745590547603
+    },
+    {
+      "dataset": "M2_thyroid_disease",
+      "seed": 1,
+      "moxec_best_mcc": 0.9793512830544933,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 24,
+      "flaml_mcc": 0.9805373678705256,
+      "autogluon_mcc": 0.9502079709591631
+    },
+    {
+      "dataset": "M2_thyroid_disease",
+      "seed": 2,
+      "moxec_best_mcc": 0.9794500969782005,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 31,
+      "flaml_mcc": 0.9849357760195774,
+      "autogluon_mcc": 0.9747430989079932
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "extratrees",
+      "mcc": 0.6532036896777613,
+      "phi": 0.13555913758777366,
+      "cost": 21476.4
+    },
+    {
+      "rule": "Cost-constrained (budget=42)",
+      "model_family": "dtree",
+      "mcc": 0.977330631861447,
+      "phi": 0.07514645858343336,
+      "cost": 41.8
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "dtree",
+      "mcc": 0.9692654130732743,
+      "phi": 0.08002631578947368,
+      "cost": 47.8
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": false,
+    "knee_and_mes_agree": false
+  },
+  "elapsed_seconds": 11234.287680149078,
+  "run_timestamp_utc": "2026-08-26T10:42:28.312274+00:00"
+}

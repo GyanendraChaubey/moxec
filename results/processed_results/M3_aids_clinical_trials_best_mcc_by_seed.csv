@@ -1,0 +1,4 @@
+dataset,seed,moxec_best_mcc,moxec_best_mcc_family,n_trials,n_pareto_front,flaml_mcc,autogluon_mcc
+M3_aids_clinical_trials,0,0.7101910900827983,rforest,100,23,0.7042265896991947,0.6431977545259407
+M3_aids_clinical_trials,1,0.7123013378736063,rforest,100,32,0.6775370581048039,0.6700395047002653
+M3_aids_clinical_trials,2,0.7197251504448445,lightgbm,100,23,0.7450479313388974,0.7284836026018621

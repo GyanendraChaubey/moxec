@@ -1,0 +1,16 @@
+{
+  "Random Search (3-obj)": {
+    "statistic": 0.0,
+    "p_value": 0.25,
+    "moxec_mean_hv": 0.9709341481503188,
+    "baseline_mean_hv": 0.9568403679354933,
+    "n_seeds": 3
+  },
+  "TPE (MCC-only)": {
+    "statistic": 0.0,
+    "p_value": 0.25,
+    "moxec_mean_hv": 0.9709341481503188,
+    "baseline_mean_hv": 0.566631854690924,
+    "n_seeds": 3
+  }
+}

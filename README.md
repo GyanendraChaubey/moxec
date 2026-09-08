@@ -28,8 +28,10 @@ accuracy-explanation-complexity choice, at the same trial budget
 single-objective search would spend making that choice implicitly.
 
 This repository is the code companion to the manuscript — everything needed
-to reproduce the experiments above. Generated results, the manuscript source,
-and journal submission packages are not included here.
+to reproduce the experiments above, plus the full numerical results
+(`results/`) so specific numbers can be checked without re-running a
+25–40 hour job. The manuscript source and journal submission packages are
+not included here.
 
 <p align="center">
   <img src="docs/architecture.png" alt="MOXEC pipeline architecture" width="850">
@@ -168,6 +170,11 @@ A Pareto front is not directly actionable — which navigation rule a
 practitioner adopts changes which configuration they walk away with on
 roughly two-thirds of the datasets studied.
 
+The full numerical results behind every number and figure above — per-seed
+raw trial data, Pareto fronts, all statistical test outputs, and every
+per-dataset figure — are in [`results/`](results/); see
+[`results/README.md`](results/README.md) for what's in each subfolder.
+
 ---
 
 ## 3. Repository structure
@@ -183,15 +190,19 @@ roughly two-thirds of the datasets studied.
 │   ├── MOXEC_kaggle_full_pipeline.ipynb
 │   ├── MOXEC_aggregate_results.ipynb
 │   └── README.md
+├── results/                   Full numerical results (see results/README.md)
+│   ├── paper_ready/, raw_results/, processed_results/
+│   ├── tables/, statistical_analysis/, metrics/, pareto_analysis/
+│   └── figures/
 └── docs/
     ├── architecture.pdf / .png    Pipeline architecture diagram
-    └── results/                    Figures shown in §2 above
+    └── results/                    The subset of figures embedded in §2 above
 ```
 
-This repository contains only the code and figures needed to reproduce and
-present the experiments above. Generated run outputs, the manuscript LaTeX
-source, and journal submission packages are kept locally and excluded via
-`.gitignore`.
+This repository contains the code, full results, and figures needed to
+reproduce and verify the experiments above. Generated run *scratch* (Optuna
+databases, AutoGluon model binaries), the manuscript LaTeX source, and
+journal submission packages are kept locally and excluded via `.gitignore`.
 
 ---
 
@@ -228,7 +239,10 @@ See [`notebooks/README.md`](notebooks/README.md).
 **Requirements:** Python 3.9–3.13, CPU-only. See
 [`full_pipeline/requirements.txt`](full_pipeline/requirements.txt) — core
 stack plus `optuna`, `shap`, `imbalanced-learn`, `xgboost`, `lightgbm`,
-`flaml`, `autogluon.tabular`, `scikit-posthocs`, and `pymoo`.
+`flaml`, `autogluon.tabular`, `scikit-posthocs`, and `pymoo`. Versions are
+pinned to the exact environment (Python 3.13.7) used to produce the results
+in §2, so a fresh install reproduces the same numbers rather than whatever
+pip resolves on the day it's run.
 
 ---
 
@@ -238,3 +252,7 @@ This code accompanies the manuscript *"MOXEC: Multi-Objective Automated
 Machine Learning for Accuracy, Explanation and Computational Complexity."*
 A formal citation (authors, venue, year, DOI) will be added here once the
 paper is published.
+
+## License
+
+MIT — see [`LICENSE`](LICENSE).

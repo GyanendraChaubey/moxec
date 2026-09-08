@@ -1,20 +1,27 @@
-# Core scientific stack -- pin loosely; these are typically already present on
-# most server/Colab/Kaggle base images, but pip will install/upgrade as needed.
-numpy
-pandas
-scipy
-matplotlib
-scikit-learn
+# Pinned to the versions used for the reported results (Python 3.13.7), so a
+# fresh install reproduces the same numbers rather than whatever pip resolves
+# on the day it's run. autogluon.tabular is the one exception: its exact
+# historical version wasn't recoverable (no venv/log survived from that run),
+# so it's pinned to the latest release compatible with Python 3.13 instead of
+# a verified one -- if you need an exact match, check AutoGluon's changelog
+# for behavior changes since 1.6.1.
+
+# Core scientific stack
+numpy==2.2.6
+pandas==2.3.2
+scipy==1.16.2
+matplotlib==3.10.7
+scikit-learn==1.7.2
 
 # MOXEC pipeline dependencies
-ucimlrepo
-optuna
-shap
-imbalanced-learn
-xgboost
-lightgbm
-flaml
-scikit-posthocs
-pymoo
-pyarrow
-autogluon.tabular
+ucimlrepo==0.0.7
+optuna==4.9.0
+shap==0.52.0
+imbalanced-learn==0.14.2
+xgboost==3.4.1
+lightgbm==4.7.0
+flaml==2.6.0
+scikit-posthocs==0.16.0
+pymoo==0.6.2
+pyarrow==21.0.0
+autogluon.tabular==1.6.1

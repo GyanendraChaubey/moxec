@@ -1,0 +1,9 @@
+{
+  "u_statistic": 18.0,
+  "p_value": 1.0,
+  "medical_n": 6,
+  "medical_mean_gain": -0.00832771643786114,
+  "agriculture_n": 6,
+  "agriculture_mean_gain": 0.0161499443074629,
+  "interpretation": "no significant domain difference -- advantage appears domain-agnostic"
+}

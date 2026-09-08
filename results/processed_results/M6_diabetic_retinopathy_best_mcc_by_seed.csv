@@ -1,0 +1,4 @@
+dataset,seed,moxec_best_mcc,moxec_best_mcc_family,n_trials,n_pareto_front,flaml_mcc,autogluon_mcc
+M6_diabetic_retinopathy,0,0.5106943255058358,logreg,100,22,0.44685371861053397,0.41858405486230443
+M6_diabetic_retinopathy,1,0.5073736343129813,mlp,100,23,0.3723663787381086,0.34551226942297975
+M6_diabetic_retinopathy,2,0.5142998458017719,mlp,100,16,0.18861078821783972,0.29534503705101517

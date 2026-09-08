@@ -1,0 +1,208 @@
+{
+  "dataset_key": "A4_landsat_satellite",
+  "config": {
+    "n_trials": 100,
+    "n_seeds": 3,
+    "cv_folds": 5,
+    "faithfulness_sample_size": 200,
+    "faithfulness_steps": 8,
+    "run_autogluon": true,
+    "baseline_time_budget_sec": 300,
+    "uci_id": 146,
+    "dataset_name": "A4_landsat_satellite",
+    "task_type": "multiclass"
+  },
+  "dataset_meta": {
+    "name": "Statlog (Landsat Satellite)",
+    "domain": "agriculture",
+    "n_instances": 6435,
+    "n_features": 36,
+    "n_classes": 6
+  },
+  "load_warnings": [],
+  "hypervolume_by_seed": [
+    {
+      "seed": 0,
+      "MOXEC (NSGA-II)": 1.091628454347638,
+      "Random Search (3-obj)": 1.0612895291140285,
+      "TPE (MCC-only)": 0.968504864209818
+    },
+    {
+      "seed": 1,
+      "MOXEC (NSGA-II)": 1.0899702377079163,
+      "Random Search (3-obj)": 1.0551182306982478,
+      "TPE (MCC-only)": 0.9996593974986846
+    },
+    {
+      "seed": 2,
+      "MOXEC (NSGA-II)": 1.056561310301264,
+      "Random Search (3-obj)": 1.0651017213569725,
+      "TPE (MCC-only)": 0.4960856722158478
+    }
+  ],
+  "hv_normalization_bounds": {
+    "mcc": [
+      0.3127389462997247,
+      0.9102763836190115
+    ],
+    "phi": [
+      0.009880060166327486,
+      0.6212437859934393
+    ],
+    "cost": [
+      7.0,
+      644676.4
+    ]
+  },
+  "tpe_points_by_seed": {
+    "0": {
+      "mcc": 0.9102763836190115,
+      "phi": 0.6212437859934393,
+      "cost": 110592.0,
+      "model_family": "lightgbm"
+    },
+    "1": {
+      "mcc": 0.9089803147540584,
+      "phi": 0.6189757155273506,
+      "cost": 89088.0,
+      "model_family": "lightgbm"
+    },
+    "2": {
+      "mcc": 0.901553550731905,
+      "phi": 0.41770656939406936,
+      "cost": 246166.0,
+      "model_family": "rforest"
+    }
+  },
+  "wilcoxon_tests": {
+    "Random Search (3-obj)": {
+      "statistic": 1.0,
+      "p_value": 0.5,
+      "moxec_mean_hv": 1.0793866674522727,
+      "baseline_mean_hv": 1.0605031603897495,
+      "n_seeds": 3
+    },
+    "TPE (MCC-only)": {
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "moxec_mean_hv": 1.0793866674522727,
+      "baseline_mean_hv": 0.8214166446414501,
+      "n_seeds": 3
+    }
+  },
+  "faithfulness_sanity_check": {
+    "spearman_rho": 0.7142857142857144,
+    "p_value": 0.046528232284167255,
+    "n_configs": 8
+  },
+  "latency_proxy_validation": {
+    "spearman_rho": 0.18787878787878787,
+    "p_value": 0.6032176100292089,
+    "n_configs": 10
+  },
+  "baseline_point_results": [
+    {
+      "method": "FLAML",
+      "seed": 0,
+      "mcc": 0.9050818197506701,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 0,
+      "mcc": 0.9069743845359226,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 1,
+      "mcc": 0.8986248815422823,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 1,
+      "mcc": 0.8994689973486251,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "FLAML",
+      "seed": 2,
+      "mcc": 0.9003049435770378,
+      "phi": null,
+      "cost": null
+    },
+    {
+      "method": "AutoGluon",
+      "seed": 2,
+      "mcc": 0.8983463960784395,
+      "phi": null,
+      "cost": null
+    }
+  ],
+  "best_mcc_by_seed": [
+    {
+      "dataset": "A4_landsat_satellite",
+      "seed": 0,
+      "moxec_best_mcc": 0.9047167176976366,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 23,
+      "flaml_mcc": 0.9050818197506701,
+      "autogluon_mcc": 0.9069743845359226
+    },
+    {
+      "dataset": "A4_landsat_satellite",
+      "seed": 1,
+      "moxec_best_mcc": 0.9066920952480146,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 21,
+      "flaml_mcc": 0.8986248815422823,
+      "autogluon_mcc": 0.8994689973486251
+    },
+    {
+      "dataset": "A4_landsat_satellite",
+      "seed": 2,
+      "moxec_best_mcc": 0.9018588741586215,
+      "moxec_best_mcc_family": "lightgbm",
+      "n_trials": 100,
+      "n_pareto_front": 29,
+      "flaml_mcc": 0.9003049435770378,
+      "autogluon_mcc": 0.8983463960784395
+    }
+  ],
+  "navigation_picks": [
+    {
+      "rule": "Knee point",
+      "model_family": "mlp",
+      "mcc": 0.8808033285967198,
+      "phi": 0.5830444683678976,
+      "cost": 1382.0
+    },
+    {
+      "rule": "Cost-constrained (budget=216)",
+      "model_family": "logreg",
+      "mcc": 0.8268959607851271,
+      "phi": 0.5429009442339424,
+      "cost": 216.0
+    },
+    {
+      "rule": "Weighted MES",
+      "model_family": "mlp",
+      "mcc": 0.8808033285967198,
+      "phi": 0.5830444683678976,
+      "cost": 1382.0
+    }
+  ],
+  "navigation_agreement": {
+    "all_three_agree": false,
+    "knee_and_mes_agree": true
+  },
+  "elapsed_seconds": 15713.335346698761,
+  "run_timestamp_utc": "2026-09-01T09:36:02.253852+00:00"
+}

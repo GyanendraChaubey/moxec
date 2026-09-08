@@ -1,0 +1,4 @@
+dataset,seed,moxec_best_mcc,moxec_best_mcc_family,n_trials,n_pareto_front,flaml_mcc,autogluon_mcc
+A4_landsat_satellite,0,0.9047167176976366,lightgbm,100,23,0.9050818197506701,0.9069743845359226
+A4_landsat_satellite,1,0.9066920952480146,lightgbm,100,21,0.8986248815422823,0.8994689973486251
+A4_landsat_satellite,2,0.9018588741586215,lightgbm,100,29,0.9003049435770378,0.8983463960784395
