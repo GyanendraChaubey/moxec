@@ -5,8 +5,9 @@ moxec_full_pipeline.py
 Standalone server script version of MOXEC_kaggle_full_pipeline.ipynb -- runs the full
 MOXEC pipeline (leakage-safe preprocessing, 9-model NSGA-II CASH search over 3
 objectives, 4 baselines, hypervolume/Wilcoxon evaluation, cross-dataset aggregation)
-across the 12-dataset, unattended, on a
-plain server.
+across the dataset portfolio in DATASET_REGISTRY -- the original 12-dataset UCI
+PALE-lean portfolio plus 26 additional KEEL-sourced datasets (downloaded on first use
+from sci2s.ugr.es/keel, no extra dependency required) -- unattended, on a plain server.
 
 Ported verbatim from the notebook version, including two fixes discovered during the
 local single-dataset runs that matter for correctness everywhere in the portfolio:
@@ -21,7 +22,9 @@ local single-dataset runs that matter for correctness everywhere in the portfoli
 USAGE
 -----
     pip install -r requirements.txt
-    python moxec_full_pipeline.py                        # run all 12 datasets
+    python moxec_full_pipeline.py --datasets uci          # original 12 UCI datasets
+    python moxec_full_pipeline.py --datasets keel         # the 26 KEEL additions
+    python moxec_full_pipeline.py --datasets all          # all 38 (expect several days)
     python moxec_full_pipeline.py --datasets M6_diabetic_retinopathy,A1_dry_bean
     python moxec_full_pipeline.py --aggregate-only        # skip the run, just aggregate
     python moxec_full_pipeline.py --n-trials 50 --n-seeds 2 --no-autogluon  # a fast smoke test
@@ -37,13 +40,17 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import os
+import re
+import io
 import sys
 import json
 import time
 import math
+import zipfile
 import argparse
 import traceback
 import logging
+import urllib.request
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -124,51 +131,166 @@ class Tee:
 
 # ======================================================================
 
-# domain: "medical" or "agriculture" -- used later for the Mann-Whitney domain contrast.
-# expected_n / expected_d / expected_classes: from PALE_lean_protocol.md §5, for sanity-checking.
+# domain: used later for the Mann-Whitney domain contrast, which specifically compares
+# rows tagged "medical" vs "agriculture" -- any other domain string (e.g. "finance",
+# "image", "game") is carried through the pipeline and reported, but simply isn't a
+# member of that one pairwise test.
+# expected_n / expected_d / expected_classes: from PALE_lean_protocol.md §5 for the
+# original 12 (UCI); hand-verified against the actual downloaded file for the 26 KEEL
+# additions below (see the "K" keys) -- used for sanity-checking, not enforcement,
+# except task_type (binary/multiclass) which is enforced (§ load_and_validate_dataset).
+# source: "uci" (via ucimlrepo, keyed by uci_id) or "keel" (downloaded + parsed from
+# sci2s.ugr.es/keel by keel_name -- see fetch_keel_dataset / _parse_keel_dat below).
 DATASET_REGISTRY = {
-    "M1_eeg_eye_state":          {"uci_id": 264, "display_name": "EEG Eye State",
+    # ---- Original 12 -- UCI, PALE_lean_protocol.md §5 (untouched, for reproducibility) ----
+    "M1_eeg_eye_state":          {"source": "uci", "uci_id": 264, "display_name": "EEG Eye State",
                                     "domain": "medical", "task_type": "binary",
                                     "expected_n": 14980, "expected_d": 14, "expected_classes": 2},
-    "M2_thyroid_disease":        {"uci_id": 102, "display_name": "Thyroid Disease (ann-thyroid)",
+    "M2_thyroid_disease":        {"source": "uci", "uci_id": 102, "display_name": "Thyroid Disease (ann-thyroid)",
                                     "domain": "medical", "task_type": "multiclass",
                                     "expected_n": 7200, "expected_d": 21, "expected_classes": 3},
-    "M3_aids_clinical_trials":   {"uci_id": 890, "display_name": "AIDS Clinical Trials Group Study 175",
+    "M3_aids_clinical_trials":   {"source": "uci", "uci_id": 890, "display_name": "AIDS Clinical Trials Group Study 175",
                                     "domain": "medical", "task_type": "binary",
                                     "expected_n": 2139, "expected_d": 23, "expected_classes": 2},
-    "M4_cardiotocography":       {"uci_id": 193, "display_name": "Cardiotocography",
+    "M4_cardiotocography":       {"source": "uci", "uci_id": 193, "display_name": "Cardiotocography",
                                     "domain": "medical", "task_type": "multiclass",
                                     "expected_n": 2126, "expected_d": 21, "expected_classes": 3},
-    "M5_obesity_levels":         {"uci_id": 544, "display_name": "Estimation of Obesity Levels",
+    "M5_obesity_levels":         {"source": "uci", "uci_id": 544, "display_name": "Estimation of Obesity Levels",
                                     "domain": "medical", "task_type": "multiclass",
                                     "expected_n": 2111, "expected_d": 16, "expected_classes": 7},
-    "M6_diabetic_retinopathy":   {"uci_id": 329, "display_name": "Diabetic Retinopathy (Debrecen)",
+    "M6_diabetic_retinopathy":   {"source": "uci", "uci_id": 329, "display_name": "Diabetic Retinopathy (Debrecen)",
                                     "domain": "medical", "task_type": "binary",
                                     "expected_n": 1151, "expected_d": 19, "expected_classes": 2},
-    "A1_dry_bean":               {"uci_id": 602, "display_name": "Dry Bean",
+    "A1_dry_bean":               {"source": "uci", "uci_id": 602, "display_name": "Dry Bean",
                                     "domain": "agriculture", "task_type": "multiclass",
                                     "expected_n": 13611, "expected_d": 16, "expected_classes": 7},
-    "A2_mushroom":                {"uci_id": 73, "display_name": "Mushroom",
+    "A2_mushroom":                {"source": "uci", "uci_id": 73, "display_name": "Mushroom",
                                     "domain": "agriculture", "task_type": "binary",
                                     "expected_n": 8124, "expected_d": 22, "expected_classes": 2},
-    "A3_wine_quality":            {"uci_id": 186, "display_name": "Wine Quality (red+white, binarized)",
+    "A3_wine_quality":            {"source": "uci", "uci_id": 186, "display_name": "Wine Quality (red+white, binarized)",
                                     "domain": "agriculture", "task_type": "binary",
                                     "expected_n": 6497, "expected_d": 11, "expected_classes": 2,
                                     "binarize_threshold": 6},
-    "A4_landsat_satellite":       {"uci_id": 146, "display_name": "Statlog (Landsat Satellite)",
+    "A4_landsat_satellite":       {"source": "uci", "uci_id": 146, "display_name": "Statlog (Landsat Satellite)",
                                     "domain": "agriculture", "task_type": "multiclass",
                                     "expected_n": 6435, "expected_d": 36, "expected_classes": 6},
-    "A5_rice":                     {"uci_id": 545, "display_name": "Rice (Cammeo and Osmancik)",
+    "A5_rice":                     {"source": "uci", "uci_id": 545, "display_name": "Rice (Cammeo and Osmancik)",
                                     "domain": "agriculture", "task_type": "binary",
                                     "expected_n": 3810, "expected_d": 7, "expected_classes": 2},
-    "A6_raisin":                   {"uci_id": 850, "display_name": "Raisin (substitutes Pumpkin Seeds -- protocol day-1 fallback)",
+    "A6_raisin":                   {"source": "uci", "uci_id": 850, "display_name": "Raisin (substitutes Pumpkin Seeds -- protocol day-1 fallback)",
                                     "domain": "agriculture", "task_type": "binary",
                                     "expected_n": 900, "expected_d": 7, "expected_classes": 2},
+
+    # ---- 26 KEEL additions -- github discussion: "make this run on KEEL datasets" ----
+    # Selection criteria, applied identically to every one of the 75 datasets in KEEL's
+    # "Standard Classification" catalog (sci2s.ugr.es/keel): n >= 900 (the protocol's own floor --
+    # below that the Pareto front doesn't reproduce across seeds, PALE_lean_protocol.md
+    # §5), classification (not regression), StratifiedKFold(5)-safe (every class has
+    # >=5 rows -- this alone excludes "nursery", whose "recommend" class has only 2),
+    # and not already a duplicate of one of the 12 above under a different name (this
+    # excludes KEEL's "thyroid" [=M2], "mushroom" [=A2, but missing-rows dropped so a
+    # different n], "satimage" [=A4]). Also excluded as impractical at this pipeline's
+    # per-dataset cost (NSGA-II CASH search + SHAP + 2 AutoML baselines, x3 seeds):
+    # anything >~20-30k rows (kr-vs-k, shuttle, adult, census, kddcup, fars, connect-4,
+    # poker) and "abalone" (28 classes, most with a handful of rows -- same failure mode
+    # as nursery). Domain is tagged honestly by real-world topic, not forced into
+    # medical/agriculture -- the two winequality sets are genuinely agriculture (food
+    # chemistry), extending that side of the existing domain contrast; no remaining
+    # KEEL "Standard Classification" set is both genuinely medical AND >=900 rows
+    # (mammographic, the closest candidate, is 830), so the medical side stays at 6.
+    # Final tally out of the 75: 26 included below; 49 excluded (36 for n<900, 3 as
+    # UCI duplicates, 2 for pathological class sparsity, 8 as too large/slow).
+    "K01_car":                    {"source": "keel", "keel_name": "car", "display_name": "Car Evaluation",
+                                    "domain": "consumer", "task_type": "multiclass",
+                                    "expected_n": 1728, "expected_d": 6, "expected_classes": 4},
+    "K02_chess_krvkp":            {"source": "keel", "keel_name": "chess", "display_name": "Chess (King-Rook vs. King-Pawn)",
+                                    "domain": "game", "task_type": "binary",
+                                    "expected_n": 3196, "expected_d": 36, "expected_classes": 2},
+    "K03_coil2000":               {"source": "keel", "keel_name": "coil2000", "display_name": "Insurance Company Benchmark (COIL 2000)",
+                                    "domain": "finance", "task_type": "binary",
+                                    "expected_n": 9822, "expected_d": 85, "expected_classes": 2},
+    "K04_contraceptive":          {"source": "keel", "keel_name": "contraceptive", "display_name": "Contraceptive Method Choice",
+                                    "domain": "social", "task_type": "multiclass",
+                                    "expected_n": 1473, "expected_d": 9, "expected_classes": 3},
+    "K05_flare":                  {"source": "keel", "keel_name": "flare", "display_name": "Solar Flare",
+                                    "domain": "physical", "task_type": "multiclass",
+                                    "expected_n": 1066, "expected_d": 11, "expected_classes": 6},
+    "K06_german_credit":          {"source": "keel", "keel_name": "german", "display_name": "German Credit (Statlog)",
+                                    "domain": "finance", "task_type": "binary",
+                                    "expected_n": 1000, "expected_d": 20, "expected_classes": 2},
+    "K07_letter":                 {"source": "keel", "keel_name": "letter", "display_name": "Letter Recognition",
+                                    "domain": "image", "task_type": "multiclass",
+                                    "expected_n": 20000, "expected_d": 16, "expected_classes": 26},
+    "K08_magic":                  {"source": "keel", "keel_name": "magic", "display_name": "MAGIC Gamma Telescope",
+                                    "domain": "physical", "task_type": "binary",
+                                    "expected_n": 19020, "expected_d": 10, "expected_classes": 2},
+    "K09_marketing":              {"source": "keel", "keel_name": "marketing", "display_name": "Marketing (Income Survey)",
+                                    "domain": "social", "task_type": "multiclass",
+                                    "expected_n": 6876, "expected_d": 13, "expected_classes": 9},
+    "K10_optdigits":              {"source": "keel", "keel_name": "optdigits", "display_name": "Optical Recognition of Handwritten Digits",
+                                    "domain": "image", "task_type": "multiclass",
+                                    "expected_n": 5620, "expected_d": 64, "expected_classes": 10},
+    "K11_page_blocks":            {"source": "keel", "keel_name": "page-blocks", "display_name": "Page Blocks Classification",
+                                    "domain": "image", "task_type": "multiclass",
+                                    "expected_n": 5472, "expected_d": 10, "expected_classes": 5},
+    "K12_penbased":               {"source": "keel", "keel_name": "penbased", "display_name": "Pen-Based Recognition of Handwritten Digits",
+                                    "domain": "image", "task_type": "multiclass",
+                                    "expected_n": 10992, "expected_d": 16, "expected_classes": 10},
+    "K13_phoneme":                {"source": "keel", "keel_name": "phoneme", "display_name": "Phoneme",
+                                    "domain": "signal", "task_type": "binary",
+                                    "expected_n": 5404, "expected_d": 5, "expected_classes": 2},
+    "K14_ring":                   {"source": "keel", "keel_name": "ring", "display_name": "Ring (synthetic)",
+                                    "domain": "synthetic", "task_type": "binary",
+                                    "expected_n": 7400, "expected_d": 20, "expected_classes": 2},
+    "K15_segment":                {"source": "keel", "keel_name": "segment", "display_name": "Image Segmentation (Statlog)",
+                                    "domain": "image", "task_type": "multiclass",
+                                    "expected_n": 2310, "expected_d": 19, "expected_classes": 7},
+    "K16_spambase":               {"source": "keel", "keel_name": "spambase", "display_name": "Spambase",
+                                    "domain": "text", "task_type": "binary",
+                                    "expected_n": 4597, "expected_d": 57, "expected_classes": 2},
+    "K17_splice":                 {"source": "keel", "keel_name": "splice", "display_name": "Splice-Junction Gene Sequences",
+                                    "domain": "biology", "task_type": "multiclass",
+                                    "expected_n": 3190, "expected_d": 60, "expected_classes": 3},
+    "K18_texture":                {"source": "keel", "keel_name": "texture", "display_name": "Texture",
+                                    "domain": "image", "task_type": "multiclass",
+                                    "expected_n": 5500, "expected_d": 40, "expected_classes": 11},
+    "K19_tic_tac_toe":            {"source": "keel", "keel_name": "tic-tac-toe", "display_name": "Tic-Tac-Toe Endgame",
+                                    "domain": "game", "task_type": "binary",
+                                    "expected_n": 958, "expected_d": 9, "expected_classes": 2},
+    "K20_titanic":                {"source": "keel", "keel_name": "titanic", "display_name": "Titanic Survival",
+                                    "domain": "social", "task_type": "binary",
+                                    "expected_n": 2201, "expected_d": 3, "expected_classes": 2},
+    "K21_twonorm":                {"source": "keel", "keel_name": "twonorm", "display_name": "Twonorm (synthetic)",
+                                    "domain": "synthetic", "task_type": "binary",
+                                    "expected_n": 7400, "expected_d": 20, "expected_classes": 2},
+    "K22_vowel":                  {"source": "keel", "keel_name": "vowel", "display_name": "Vowel Recognition (Deterding)",
+                                    "domain": "signal", "task_type": "multiclass",
+                                    "expected_n": 990, "expected_d": 13, "expected_classes": 11},
+    "K23_winequality_red":        {"source": "keel", "keel_name": "winequality-red", "display_name": "Wine Quality -- Red (multiclass)",
+                                    "domain": "agriculture", "task_type": "multiclass",
+                                    "expected_n": 1599, "expected_d": 11, "expected_classes": 6},
+    "K24_winequality_white":      {"source": "keel", "keel_name": "winequality-white", "display_name": "Wine Quality -- White (multiclass)",
+                                    "domain": "agriculture", "task_type": "multiclass",
+                                    "expected_n": 4898, "expected_d": 11, "expected_classes": 7,
+                                    "note": "smallest class has 5 rows -- SMOTE (k_neighbors=5) will prune "
+                                            "some trials on this class in-fold; StratifiedKFold(5) itself is fine"},
+    "K25_yeast":                  {"source": "keel", "keel_name": "yeast", "display_name": "Yeast Protein Localization",
+                                    "domain": "biology", "task_type": "multiclass",
+                                    "expected_n": 1484, "expected_d": 8, "expected_classes": 10,
+                                    "note": "smallest class (ERL) has 5 rows -- same SMOTE caveat as K24"},
+    "K26_banana":                 {"source": "keel", "keel_name": "banana", "display_name": "Banana (synthetic)",
+                                    "domain": "synthetic", "task_type": "binary",
+                                    "expected_n": 5300, "expected_d": 2, "expected_classes": 2},
 }
+
+def _dataset_source_label(entry):
+    if entry.get("source", "uci") == "uci":
+        return f"uci_id={entry['uci_id']}"
+    return f"keel='{entry['keel_name']}'"
 
 print(f"Registry loaded: {len(DATASET_REGISTRY)} datasets.")
 for key, entry in DATASET_REGISTRY.items():
-    print(f"  {key}: uci_id={entry['uci_id']:<4} expected {entry['expected_n']:>6} x {entry['expected_d']:<3} "
+    print(f"  {key}: {_dataset_source_label(entry):<20} expected {entry['expected_n']:>6} x {entry['expected_d']:<3} "
           f"({entry['expected_classes']}-class, {entry['domain']})")
 
 
@@ -866,16 +988,103 @@ def run_wilcoxon_tests(hv_df):
 print("Hypervolume (compute_hv_for_front, get_tpe_point, evaluate_hypervolume) and Wilcoxon functions defined.")
 
 
+KEEL_BASE_URL = "https://sci2s.ugr.es/keel/dataset/data/classification/"
+
+
+def _parse_keel_dat(text):
+    '''Parses a KEEL .dat file (ARFF-like: @relation/@attribute/@inputs/@outputs/@data)
+    into (X_raw, y_raw) pandas objects shaped exactly like what UCI\'s fetch_ucirepo
+    returns, so downstream cleaning (cat_cols/get_dummies/fillna below) is unchanged.
+    Numeric attributes ("real"/"integer") are cast to float64; nominal attributes
+    ("{a,b,c}") are left as strings for later one-hot encoding. "?" -> NaN either way,
+    though every dataset in DATASET_REGISTRY is a KEEL complete-case file with none.'''
+    attr_names, attr_is_numeric = [], []
+    output_name = None
+    data_start = None
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if not stripped:
+            continue
+        low = stripped.lower()
+        if low.startswith("@attribute"):
+            rest = stripped[len("@attribute"):].strip()
+            m = re.match(r"^'?([^'\s{]+)'?\s*(.*)$", rest)
+            name, spec = m.group(1), m.group(2).strip()
+            attr_names.append(name)
+            attr_is_numeric.append(not spec.startswith("{"))
+        elif low.startswith("@output"):  # matches both "@output" (car.dat) and "@outputs"
+            output_name = stripped.split(None, 1)[1].split(",")[0].strip()
+        elif low.startswith("@data"):
+            data_start = i + 1
+            break
+    if data_start is None:
+        raise ValueError("KEEL file has no @data section -- malformed download?")
+
+    data_lines = [l for l in lines[data_start:] if l.strip()]
+    rows = [[v.strip().strip("'\"") for v in l.split(",")] for l in data_lines]
+    df = pd.DataFrame(rows, columns=attr_names).replace("?", np.nan)
+
+    if output_name is None or output_name not in df.columns:
+        output_name = attr_names[-1]  # KEEL convention: target is always the last attribute
+    for name, is_numeric in zip(attr_names, attr_is_numeric):
+        if name != output_name and is_numeric:
+            df[name] = pd.to_numeric(df[name], errors="coerce")
+
+    y_raw = df[output_name]
+    X_raw = df.drop(columns=[output_name])
+    return X_raw, y_raw
+
+
+def fetch_keel_dataset(keel_name, cache_dir):
+    '''Downloads (once; cached thereafter) and parses one KEEL "Standard Classification"
+    dataset by its KEEL name, returning (X_raw, y_raw). The plain "<name>.zip" archive
+    (as opposed to the "<name>-5-fold.zip" partitioned ones) contains exactly one
+    <name>.dat file holding the complete, unpartitioned dataset.'''
+    cache_dir = Path(cache_dir)
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    dat_path = cache_dir / f"{keel_name}.dat"
+
+    if not dat_path.exists():
+        url = f"{KEEL_BASE_URL}{keel_name}.zip"
+        print(f"  Downloading KEEL dataset '{keel_name}' from {url} ...")
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                zip_bytes = resp.read()
+        except Exception as e:
+            raise RuntimeError(f"Failed to download KEEL dataset '{keel_name}' from {url}: {e}") from e
+        with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+            dat_members = [n for n in zf.namelist() if n.lower().endswith(".dat")]
+            if not dat_members:
+                raise RuntimeError(f"No .dat file found inside {url} -- got: {zf.namelist()}")
+            with zf.open(dat_members[0]) as f:
+                dat_path.write_bytes(f.read())
+
+    text = dat_path.read_text(encoding="latin-1")
+    return _parse_keel_dat(text)
+
+print("KEEL loader (fetch_keel_dataset / _parse_keel_dat) defined.")
+
+
 def load_and_validate_dataset(dataset_key):
     entry = DATASET_REGISTRY[dataset_key]
-    from ucimlrepo import fetch_ucirepo
+    source = entry.get("source", "uci")
 
-    ds = fetch_ucirepo(id=entry["uci_id"])
-    X_raw = ds.data.features.copy()
-    y_raw = ds.data.targets.copy()
-    if isinstance(y_raw, pd.DataFrame):
-        y_raw = y_raw.iloc[:, 0]
-    meta = ds.metadata
+    if source == "uci":
+        from ucimlrepo import fetch_ucirepo
+        ds = fetch_ucirepo(id=entry["uci_id"])
+        X_raw = ds.data.features.copy()
+        y_raw = ds.data.targets.copy()
+        if isinstance(y_raw, pd.DataFrame):
+            y_raw = y_raw.iloc[:, 0]
+        dataset_name = ds.metadata.name
+    elif source == "keel":
+        keel_cache_dir = OUTPUT_ROOT / "_datasets_keel"
+        X_raw, y_raw = fetch_keel_dataset(entry["keel_name"], keel_cache_dir)
+        dataset_name = f"KEEL: {entry['keel_name']}"
+    else:
+        raise ValueError(f"[{dataset_key}] unknown dataset source '{source}' -- expected 'uci' or 'keel'.")
 
     if entry.get("binarize_threshold") is not None:
         y_raw = (pd.to_numeric(y_raw, errors="coerce") >= entry["binarize_threshold"]).astype(int)
@@ -936,10 +1145,10 @@ def load_and_validate_dataset(dataset_key):
     feature_names = X_enc.columns.tolist()
 
     class_counts = dict(pd.Series(y).value_counts().sort_index())
-    print(f"[{dataset_key}] Loaded: {meta.name} -- X.shape={X.shape}, "
+    print(f"[{dataset_key}] Loaded: {dataset_name} -- X.shape={X.shape}, "
           f"classes={list(le.classes_)}, class distribution={class_counts}")
 
-    return X, y, n_classes_actual, feature_names, meta, load_warnings
+    return X, y, n_classes_actual, feature_names, dataset_name, load_warnings
 
 print("load_and_validate_dataset defined.")
 
@@ -949,11 +1158,14 @@ print("load_and_validate_dataset defined.")
 # ======================================================================
 def parse_args():
     p = argparse.ArgumentParser(
-        description="Run the full MOXEC pipeline across the 12-dataset PALE-lean portfolio.",
+        description="Run the full MOXEC pipeline across the UCI PALE-lean portfolio and/or the KEEL additions.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     p.add_argument("--datasets", type=str, default="all",
-                    help="Comma-separated dataset keys to run (see DATASET_REGISTRY), or 'all' for all 12.")
+                    help="Comma-separated dataset keys to run (see DATASET_REGISTRY), or one of: "
+                         "'all' (every registry entry), 'uci' (the original 12), 'keel' (the 26 KEEL "
+                         "additions). 'all' is a lot of compute -- see full_pipeline/README.md before "
+                         "using it unmodified.")
     p.add_argument("--output-dir", type=str, default="./outputs",
                     help="Root output directory (the categorized tree is created under this).")
     p.add_argument("--n-trials", type=int, default=100, help="NSGA-II / Random / TPE trial budget per seed.")
@@ -1044,7 +1256,9 @@ def run_dataset_pipeline(dataset_key):
 
     CONFIG = {
         **GLOBAL_RUN_CONFIG,
-        "uci_id": entry["uci_id"],
+        "dataset_source": entry.get("source", "uci"),
+        "uci_id": entry.get("uci_id"),
+        "keel_name": entry.get("keel_name"),
         "dataset_name": dataset_key,
         "task_type": entry["task_type"],
     }
@@ -1054,10 +1268,10 @@ def run_dataset_pipeline(dataset_key):
     STUDY_DB = f"sqlite:///{BASE_DIR / 'optuna_studies.db'}"
 
     print("\n" + "=" * 78)
-    print(f"DATASET: {dataset_key}  ({entry['display_name']})  uci_id={entry['uci_id']}")
+    print(f"DATASET: {dataset_key}  ({entry['display_name']})  {_dataset_source_label(entry)}")
     print("=" * 78)
 
-    X, y, n_classes_actual, feature_names, meta, load_warnings = load_and_validate_dataset(dataset_key)
+    X, y, n_classes_actual, feature_names, dataset_name, load_warnings = load_and_validate_dataset(dataset_key)
     n_classes = n_classes_actual
 
     print(f"\n[{dataset_key}] Faithfulness sanity check...")
@@ -1118,7 +1332,7 @@ def run_dataset_pipeline(dataset_key):
     artifact_summary = {
         "dataset_key": dataset_key,
         "config": CONFIG,
-        "dataset_meta": {"name": meta.name, "domain": entry["domain"],
+        "dataset_meta": {"name": dataset_name, "domain": entry["domain"],
                           "n_instances": int(X.shape[0]), "n_features": int(X.shape[1]),
                           "n_classes": int(n_classes_actual)},
         "load_warnings": load_warnings,
@@ -1646,8 +1860,13 @@ def main():
     }
     print(f"Run config: {GLOBAL_RUN_CONFIG}")
 
-    if args.datasets.strip().lower() == "all":
+    datasets_arg = args.datasets.strip().lower()
+    if datasets_arg == "all":
         dataset_keys = list(DATASET_REGISTRY.keys())
+    elif datasets_arg == "uci":
+        dataset_keys = [k for k, v in DATASET_REGISTRY.items() if v.get("source", "uci") == "uci"]
+    elif datasets_arg == "keel":
+        dataset_keys = [k for k, v in DATASET_REGISTRY.items() if v.get("source") == "keel"]
     else:
         dataset_keys = [k.strip() for k in args.datasets.split(",") if k.strip()]
         unknown = [k for k in dataset_keys if k not in DATASET_REGISTRY]
